@@ -1,4 +1,26 @@
 ###########################################################################
+#################### CPE 333 LAB 0   ######################################
+###########################################################################
+
+
+
+.data
+A:      .word 0,   3,   2,   0,   3,   1,   0,   3,   2
+
+B:      .word 1,   1,   0,   3,   1,   2,   0,   0,   0
+
+C:      .word 0,   0,  0,   0,   0,   0,   0,   0,   0
+
+dim_size: 3
+
+.text
+        li sp, 0x10000          # Initialize the stack pointer
+        la s0, A                # Load the base address of A into s0
+        la s1, B                # Load the base address of B into s1
+        la s2, C                # Load the base address of C into s2
+        la s3, dim_size         # Load the base address of dim_size into s3
+
+###########################################################################
 #################### Multiplication Function  #############################
 ###########################################################################
 #Note only works for possitive integers
