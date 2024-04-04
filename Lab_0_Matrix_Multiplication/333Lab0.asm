@@ -1,7 +1,7 @@
 ###########################################################################
 #################### CPE 333 LAB 0   ######################################
 ###########################################################################
-
+#Isaac Lake, Ethan Vosburg, Samuel Solano, and Victoria Asencio-Clemens
 
 
 .data
@@ -11,7 +11,7 @@ B:      .word 1,   1,   0,   3,   1,   2,   0,   0,   0
 
 C:      .word 0,   0,  0,   0,   0,   0,   0,   0,   0
 
-dim_size: 3
+dim_size: .word 3
 
 .text
         li sp, 0x10000          # Initialize the stack pointer
