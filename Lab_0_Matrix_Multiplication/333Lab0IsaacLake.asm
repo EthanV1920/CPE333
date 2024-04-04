@@ -8,7 +8,7 @@
 #Registers Changed: t0, t1, t2, t3
 MULT:	
 	addi sp, sp, -4		#Pushes ra to stack
-    sw ra, 0(sp)
+	sw ra, 0(sp)
 	li t0, 0		#Running Total
 	li t1, 1		#Loop "Counter"
 	li t2, -1		#Starts at -1 Due to how we increment it
@@ -26,6 +26,6 @@ MULTI:
 MULTEND:
 	mv a7, t0
 
-    	lw ra, 0(sp)		#Pop return address from the stack
-    	addi sp, sp, 4
+	lw ra, 0(sp)		#Pop return address from the stack
+	addi sp, sp, 4
 	ret
