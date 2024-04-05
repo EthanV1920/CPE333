@@ -70,27 +70,35 @@ NESTED: beq a1, s3, LOOP
 
 #Inputs: a0, a1
 #Outputs: a2
-#Registers Changed: t4, t5, t6, a3, a4
+#Registers Changed: t4, t5, t6, a3, a6, a7
 RCMULT:
-addi sp, sp, -4
-sw ra, 0(sp)
-mv a6, a0
-mv a7, s3
-call MULT
-slli t4, a7, 2
-add t4, s0, t4
-mv t5, a1
-slli t5, t5, 2
-mv t6, zero
-mv a2, zero
-bge t4, s3, RCMULTEND
-lw a3, 0(t4)
-lw a4, 0(t5)
-mv a6, a3
-mv a7, a4
-call MULT
-
-
+	addi sp, sp, -4 #move stack pointer
+	sw ra, 0(sp) #push return address to stack
+	mv a6, a0 #move row number to a6 for multiplication
+	mv a7, s3 #move dim_size to a7 for muliplication
+	call MULT #multiply row number by dim_size
+	slli t4, a7, 2 #row product x 4 = offset for first element
+	add t4, s0, t4 #add to pointer for matrix array A
+	mv t5, a1 #move column number to t5
+	slli t5, t5, 2 #multiply by four to get offset for first element
+	add t5, s1, t5 #add to pointer for matrix array B
+	mv t6, zero #initialize value for looping
+	mv a2, zero #initialize total sum
+DOTPROD:
+	bge t4, s3, RCMULTEND #branch when done with dot product
+	lw a6, 0(t4) #load first row value from A
+	lw a7, 0(t5) #load first column value from B
+	call MULT #multiply row and column values
+	add a2, a2, a7 #add product to total
+	addi t4, t4, 4 #move to next row value
+	slli a3, s3, 2 #a3 = dim_size x 4
+	add t5, t5, a3 #move to next column value
+	addi t4, t4, 1 #increment number for looping
+	j DOTPROD #loop
+RCMULTEND: 
+	sw ra, 0(sp) #load return address
+	addi sp, sp, 4 #return stack pointer to original value
+	ret #return
 
 ###########################################################################
 #################### Multiplication Function  #############################
