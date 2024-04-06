@@ -43,7 +43,7 @@ C:      .word 0,   0,   0,   0,   0,   0,   0,   0,   0
         addi t1, x0, 0          # this is the counter for the array in jumps of 4 (for a word)
 		
 
-LOOP:   beq t0, s5, DONE
+LOOP:   beq t0, s3, DONE
 		addi a1, x0, 0          # var for nested loop
 		addi a0, a0, 1
         addi t0, t0, 1
