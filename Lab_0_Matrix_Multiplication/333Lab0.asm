@@ -4,18 +4,21 @@
 #Isaac Lake, Ethan Vosburg, Samuel Solano, and Victoria Asencio-Clemens
 
 
-.data
-A:      .word 0,   3,   2,   0,   3,   1,   0,   3,   2
+	.data
+A:
+	.word 0, 3, 2, 0, 3, 1, 0, 3, 2
 
-B:      .word 1,   1,   0,   3,   1,   2,   0,   0,   0
+B:
+	.word 1, 1, 0, 3, 1, 2, 0, 0, 0
 
-C:      .word 0,   0,   0,   0,   0,   0,   0,   0,   0
+C:
+	.word 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 
 
-.text
+	.text
 ###########################################################################
-#################### Initialization  ######################################
+#################### Initialization ######################################
 ###########################################################################
 
         li sp, 0x10000          # Initialize the stack pointer
@@ -29,7 +32,7 @@ C:      .word 0,   0,   0,   0,   0,   0,   0,   0,   0
 		mv s5, a7				# Store the number of elements in the matrix in s5
 
 ###########################################################################
-#################### Matrix Traversal Function  ###########################
+#################### Matrix Traversal Function ###########################
 ###########################################################################
 
 #a0 row number
@@ -48,10 +51,12 @@ LOOP:   beq t0, s3, DONE
 		addi a0, a0, 1
         addi t0, t0, 1
 
+LOOP:
+	beq   t0, s3, DONE
+	addi  a1, x0, 0                 # sentinel for nested loop
+	addi  a0, a0, 1
+	addi  t0, t0, 1
 
-NESTED: beq a1, s3, LOOP        
-		
-		call RCMULT
 
 
         sw a2, 0(s2)               # put mult result into s4
@@ -61,34 +66,41 @@ NESTED: beq a1, s3, LOOP
 		addi a1, a1, 1             #update nested var 
 		j NESTED
 
+	add   s4, s2, t1                # change s4 to store location <- (s2 (array start) + t1 (offset))
+	sw    a2, 0(s4)                 # put mult result into s4
+	addi  t1, t1, 4                 # update t1 which is the array offset
 
-	# lw a6, 0(s0)            # loads first value of matrix A into a6
-	# lw a7, 0(s1)            # loads first value of matrix B into a7
-                 
-	# call MULT               # multiplies matrix A and B values
+	addi  a1, a1, 1                 # update nested sentinel
+	j     NESTED
 
-	# sw a7, 0(s2)            # store the product in matrix C address
+
+# lw a6, 0(s0) # loads first value of matrix A into a6
+# lw a7, 0(s1) # loads first value of matrix B into a7
+
+# call MULT # multiplies matrix A and B values
+
+# sw a7, 0(s2) # store the product in matrix C address
 
 ###########################################################################
-#################### Row / Column Multiplication  #########################
+#################### Row / Column Multiplication #########################
 ###########################################################################
 
 #Inputs: a0, a1
 #Outputs: a2
 #Registers Changed: t4, t5, t6, a3, a6, a7
 RCMULT:
-	addi sp, sp, -4 #move stack pointer
-	sw ra, 0(sp) #push return address to stack
-	mv a6, a0 #move row number to a6 for multiplication
-	mv a7, s3 #move dim_size to a7 for muliplication
-	call MULT #multiply row number by dim_size
-	slli t4, a7, 2 #row product x 4 = offset for first element
-	add t4, s0, t4 #add to pointer for matrix array A
-	mv t5, a1 #move column number to t5
-	slli t5, t5, 2 #multiply by four to get offset for first element
-	add t5, s1, t5 #add to pointer for matrix array B
-	mv t6, zero #initialize value for looping
-	mv a2, zero #initialize total sum
+	addi  sp, sp, -4                #move stack pointer
+	sw    ra, 0(sp)                 #push return address to stack
+	mv    a6, a0                    #move row number to a6 for multiplication
+	mv    a7, s3                    #move dim_size to a7 for muliplication
+	call  MULT                      #multiply row number by dim_size
+	slli  t4, a7, 2                 #row product x 4 = offset for first element
+	add   t4, s0, t4                #add to pointer for matrix array A
+	mv    t5, a1                    #move column number to t5
+	slli  t5, t5, 2                 #multiply by four to get offset for first element
+	add   t5, s1, t5                #add to pointer for matrix array B
+	mv    t6, zero                  #initialize value for looping
+	mv    a2, zero                  #initialize total sum
 DOTPROD:
 	bge t6, s3, RCMULTEND #branch when done with dot product
 	lw a6, 0(t4) #load first row value from A
@@ -106,9 +118,9 @@ RCMULTEND:
 	ret #return
 
 ###########################################################################
-#################### Multiplication Function  #############################
+#################### Multiplication Function #############################
 ###########################################################################
-#Note only works for possitive integers
+#Note only works for positive integers
 
 #Inputs: a6, a7
 #Outputs: a7
