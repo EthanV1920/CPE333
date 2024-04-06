@@ -36,7 +36,7 @@ C:      .word 0,   0,   0,   0,   0,   0,   0,   0,   0
 		addi a0, x0, -1          # row number to input into RCMULT
 		addi a1, x0, 0          # sentinel for overall loop  and  - col number
 		addi t0, x0, 0          # sentinel for nested loop  - row loop
-                addi t1, x0, 0          # this is the counter for the array in jumps of 4 (for a word)
+        addi t1, x0, 0          # this is the counter for the array in jumps of 4 (for a word)
 		
 
 LOOP:   beq t0, s3, DONE
@@ -49,9 +49,9 @@ NESTED: beq a1, s3, LOOP
 		
 		call RCMULT
 
-                add s4, s2, t1             #change s4 to store location <- (s2 (array start) + t1 (offset))
-                sw a2, 0(s4)               # put mult result into s4
-                addi t1, t1, 4             #update t1 which is the array offset
+        add s4, s2, t1             #change s4 to store location <- (s2 (array start) + t1 (offset))
+        sw a2, 0(s4)               # put mult result into s4
+        addi t1, t1, 4             #update t1 which is the array offset
 
 		addi a1, a1, 1             #update nested sentinel 
 		j NESTED
