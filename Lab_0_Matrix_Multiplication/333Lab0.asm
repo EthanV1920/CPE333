@@ -6,28 +6,28 @@
 
 .data
 A:
-	# .word 0, 3, 2, 0, 3, 1, 0, 3, 2
-	.word 1, 1, 1, 1, 1, 
-	      2, 2, 2, 2, 2, 
-	      3, 3, 3, 3, 3, 
-	      4, 4, 4, 4, 4, 
-	      5, 5, 5, 5, 5
+	.word 0, 3, 2, 0, 3, 1, 0, 3, 2
+	# .word 1, 1, 1, 1, 1, 
+	      # 2, 2, 2, 2, 2, 
+	      # 3, 3, 3, 3, 3, 
+	      # 4, 4, 4, 4, 4, 
+	      # 5, 5, 5, 5, 5
 
 B:
-	# .word 1, 1, 0, 3, 1, 2, 0, 0, 0
-	.word 1, 1, 1, 1, 1, 
-	      2, 2, 2, 2, 2, 
-	      3, 3, 3, 3, 3, 
-	      4, 4, 4, 4, 4, 
-	      5, 5, 5, 5, 5
+	.word 1, 1, 0, 3, 1, 2, 0, 0, 0
+	# .word 1, 1, 1, 1, 1, 
+	      # 2, 2, 2, 2, 2, 
+	      # 3, 3, 3, 3, 3, 
+	      # 4, 4, 4, 4, 4, 
+	      # 5, 5, 5, 5, 5
 
 C:
-	# .word 0, 0, 0, 0, 0, 0, 0, 0, 0
-	.word 0, 0, 0, 0, 0, 
-	      0, 0, 0, 0, 0, 
-	      0, 0, 0, 0, 0, 
-	      0, 0, 0, 0, 0, 
-	      0, 0, 0, 0, 0
+	.word 0, 0, 0, 0, 0, 0, 0, 0, 0
+	# .word 0, 0, 0, 0, 0, 
+	      # 0, 0, 0, 0, 0, 
+	      # 0, 0, 0, 0, 0, 
+	      # 0, 0, 0, 0, 0, 
+	      # 0, 0, 0, 0, 0
 
 
 
@@ -40,8 +40,8 @@ C:
 	la    s0, A                     # Load the base address of A into s0
 	la    s1, B                     # Load the base address of B into s1
 	la    s2, C                     # Load the base address of C into s2
-	# li    s3, 3                     # Load the dim_size into s3
-	li    s3, 5                     # Load the dim_size into s3
+	li    s3, 3                     # Load the dim_size into s3
+	# li    s3, 5                     # Load the dim_size into s3
 	mv    a6, s3                    # Load the dim_size into a6
 	mv    a7, s3                    # Load the dim_size into a7
 	# Calsulate the number of elements in the matrix
