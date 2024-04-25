@@ -115,7 +115,7 @@ module OTTER_MCU(input CLK,
                                 && de_inst.opcode != LUI
                                 && de_inst.opcode != AUIPC
                                 && de_inst.opcode != JAL;
-                                
+
     assign de_inst.rs2_used=    de_inst.rs2 != 0
                                 && de_inst.opcode != JAL
                                 && de_inst.opcode != JALR
