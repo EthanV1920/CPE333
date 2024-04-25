@@ -181,7 +181,7 @@ module OTTER_MCU(input CLK,
      
 
     
-    ALU otter_ALU (.srcA(id_ex_struct.mux_A_out), .srcB(id_ex_struct.mux_B_out), .alu_fun(id_ex_struct.alu_fun), .alu_result(id_ex_struct.regWrite));
+    ALU otter_ALU (.srcA(id_ex_struct.mux_A_out), .srcB(id_ex_struct.mux_B_out), .alu_fun(id_ex_struct.alu_fun), .alu_result(alu_out));
     
     Branch_Condition_Generator otter_cond_gen (.br1(sreg1), .br2(sreg2), .br_eq(cu_br_eq), 
                                                .br_lt(cu_br_lt), .br_ltu(cu_br_ltu));
@@ -193,7 +193,9 @@ module OTTER_MCU(input CLK,
     intr_t ex_mem_inst;
 
     always_ff @ (posedge CLK) begin
-        ex_mem_ins <= id_ex_struct;
+        ex_mem_inst <= id_ex_struct;
+        ex_mem_inst.regWrite <= alu_out;
+        
     end
     
    
