@@ -94,22 +94,20 @@ module OTTER_MCU(input CLK,
                          .MEM_SIZE(ir[13:12]), .MEM_SIGN(ir[14]), .MEM_DOUT2(ir), .MEM_DOUT1(if_de_reg), 
                          .IO_IN(IOBUS_IN), .IO_WR(IOBUS_WR), .MEM_CLK(CLK));
     
-
-    
      
 //==== Instruction Decode ===========================================
     logic [31:0] de_ex_opA;
     logic [31:0] de_ex_opB;
     logic [31:0] de_ex_rs2;
 
-    instr_t de_ex_inst, de_inst;
+    instr_t de_ex_struct, de_inst;
     
     opcode_t OPCODE;
     assign OPCODE_t = opcode_t'(opcode);
     
-    assign de_inst.rs1_addr=IR[19:15];
-    assign de_inst.rs2_addr=IR[24:20];
-    assign de_inst.rd_addr=IR[11:7];
+    assign de_inst.rs1_addr= if_de_reg[19:15];
+    assign de_inst.rs2_addr= if_de_reg[24:20];
+    assign de_inst.rd_addr= if_de_reg[11:7];
     assign de_inst.opcode=OPCODE;
    
     assign de_inst.rs1_used=    de_inst.rs1 != 0
@@ -136,7 +134,7 @@ module OTTER_MCU(input CLK,
    CU_Decoder otter_cu_dec (.ir(if_de_reg), .br_EQ(cu_br_eq), .br_LT(cu_br_lt), .br_LTU(cu_br_ltu), .CU_RST(cu_reset), .ALU_FUN(cu_alu_fun), .srcA_SEL(mux_a_sel), 
                                 .srcB_SEL(mux_b_sel), .PC_SEL(cu_pc_sel), .RF_SEL(cu_rf_sel), .RF_WE(cu_rf_we), .memWE2(cu_memWE2), .memRDEN2(cu_RDEN2));
 
-    RegFile otter_reg_file (.en(cu_rf_we), .adr1(if_de_reg[19:15]), .adr2(if_de_reg[24:20]), .w_adr(), 
+    RegFile otter_reg_file (.en(cu_rf_we), .adr1(if_de_reg[19:15]), .adr2(if_de_reg[24:20]), .w_adr(), // add from write back
                             .w_data(RF_MUX_out), .CLK(CLK), .rs1(sreg1), .rs2(sreg2));
     
     Immed_Gen otter_immed_gen (.Instruction(if_de_reg), .U_Type(U_imm), .I_Type(I_imm), .S_Type(S_imm), 
@@ -153,14 +151,16 @@ module OTTER_MCU(input CLK,
    intr_t id_ex_struct;
    
    always_ff @ (posedge CLK) begin
-        id_ex_struct.regWrite = cu_rf_we;
-        id_ex_struct.memWrite = cu_memWE2;
-        id_ex_struct.memRead2 = cu_RDEN2;
-        id_ex_struct.alu_fun = cu_alu_fun;
-        id_ex_struct.rf_wr_sel = cu_rf_sel;
-        id_ex_struct.mux_A_out = mux_a_out;
-        id_ex_struct.mux_B_out = mux_b_out;
-        id_ex_struct.rd_addr 
+        id_ex_struct <= de_inst;
+        id_ex_struct.alu_fun <= cu_alu_fun;
+        id_ex_struct.memWrite <= cu_memWE2;
+        id_ex_struct.memRead2 <= cu_RDEN2;
+        id_ex_struct.regWrite <= cu_rf_we;
+        id_ex_struct.rf_wr_sel <= cu_rf_sel;
+        id_ex_struct.mem_type;  //sign, size
+        id_ex_struct.pc;
+        id_ex_struct.mux_A_out <= mux_a_out;
+        id_ex_struct.mux_B_out <= mux_b_out;
    end
     
     
@@ -188,6 +188,8 @@ module OTTER_MCU(input CLK,
     Branch_Address_Generator otter_addr_gen (.B_Type(B_imm), .J_Type(J_imm), .I_Type(I_imm), 
                                              .PC(if_de_pc), .rs(sreg1), .branch(addr_pc_branch), 
                                              .jal(addr_pc_jal), .jalr(addr_pc_jalr));
+
+    intr_t ex_mem_inst;
 
     always_ff @ (posedge CLK) begin
         ex_mem_inst.opcode = id_ex_struct.opcode;
