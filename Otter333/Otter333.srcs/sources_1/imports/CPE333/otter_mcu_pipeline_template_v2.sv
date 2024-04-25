@@ -47,6 +47,7 @@ typedef struct packed{
     logic [1:0] rf_wr_sel;
     logic [2:0] mem_type;  //sign, size
     logic [31:0] pc;
+    // added by v and sosa
     logic [31:0] mux_A_out;
     logic [31:0] mux_B_out;
     
