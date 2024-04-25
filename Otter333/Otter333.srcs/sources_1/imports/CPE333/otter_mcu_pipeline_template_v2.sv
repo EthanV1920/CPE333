@@ -192,22 +192,7 @@ module OTTER_MCU(input CLK,
     intr_t ex_mem_inst;
 
     always_ff @ (posedge CLK) begin
-        ex_mem_inst.opcode = id_ex_struct.opcode;
-        ex_mem_inst.rs1_addr = id_ex_struct.rs1_addr;
-        ex_mem_inst.rs2_addr = id_ex_struct.rs2_addr;
-        ex_mem_inst.rd_addr = id_ex_struct.rd_addr;
-        ex_mem_inst.rs1_used = id_ex_struct.rs1_used;
-        ex_mem_inst.rs2_used = id_ex_struct.rs2_used;
-        ex_mem_inst.rd_used = id_ex_struct.rd_used;
-        ex_mem_inst.alu_fun = id_ex_struct.alu_fun;
-        ex_mem_inst.memWrite = id_ex_struct.memWrite;
-        ex_mem_inst.memRead2 = id_ex_struct.memRead2;
-        ex_mem_inst.regWrite = id_ex_struct.regWrite;
-        ex_mem_inst.rf_wr_sel = id_ex_struct.rf_wr_sel;
-        ex_mem_inst.mem_type = id_ex_struct.mem_type;  //sign, size
-        ex_mem_inst.pc = id_ex_struct.pc;
-        ex_mem_inst.mux_A_out = id_ex_struct.mux_A_out;
-        ex_mem_inst.mux_B_out = id_ex_struct.mux_B_out;
+        ex_mem_ins <= id_ex_struct;
     end
     
    
