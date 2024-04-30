@@ -1,0 +1,22 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/OTTER_MCU/OTTER_MCU.srcs/sources_1/imports/Hardware/ALU/ALU.srcs/sources_1/new/ALU.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/MUX/ALU_MUX_A.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/MUX/ALU_MUX_B.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Branch_Addr_Gen/Branch_Addr_Gen.srcs/sources_1/new/Branch_Address_Generator.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Branch_Cond_Gen/Branch_Cond_Gen.srcs/sources_1/new/Branch_Condition_Generator.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Control_Unit/Control_Unit.srcs/sources_1/new/CU_Decoder.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Immediate Generator/Immediate Generator.srcs/sources_1/new/Immed_Gen.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/OTTER_MCU/OTTER_MCU.srcs/sources_1/imports/Hardware/Program Counter/Program Counter.srcs/sources_1/imports/CPE133/Lab3/Lab3.srcs/sources_1/new/MUX.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Program Counter/Program Counter.srcs/sources_1/new/PCregister.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/Program Counter/Program Counter.srcs/sources_1/new/ProgramCounter.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/MUX/RF_MUX.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/RegFile/RegFile.srcs/sources_1/new/RegFile.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/otter_memory_v1_07.sv" \
+"../../../../Otter333.srcs/sources_1/imports/CPE333/otter_mcu_pipeline.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

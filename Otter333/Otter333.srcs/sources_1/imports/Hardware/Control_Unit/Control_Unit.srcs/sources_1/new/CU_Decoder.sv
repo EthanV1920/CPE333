@@ -7,17 +7,21 @@
 // Module Name: CU_Decoder
 // Project Name: Control_Unit
 // Target Devices: Basys3 Board
-// Description: Docoder for machine instructions 
+// Description: Decoder for machine instructions
 //              that don't have critical timing
+//
 // Revision 0.01 - File Created
 //////////////////////////////////////////////////////////////////////////////////
 
 module CU_Decoder(
+    // Inputs
     input [31:0] ir,
     input br_EQ,
     input br_LT,
     input br_LTU,
     input CU_RST,
+
+    // Outputs
     output logic [3:0] ALU_FUN,
     output logic [1:0] srcA_SEL,
     output logic [2:0] srcB_SEL,
@@ -27,11 +31,11 @@ module CU_Decoder(
     output logic RF_WE,
     output logic memWE2,
 //    output logic memRDEN1,
-    output logic memRDEN2,
+    output logic memRDEN2
     );
 
     always_comb begin
-    // initialize all ouputs to zero
+    // initialize all outputs to zero
         ALU_FUN = 4'b0000;
         srcA_SEL = 2'b00;
         srcB_SEL = 3'b000;
@@ -40,33 +44,33 @@ module CU_Decoder(
         RF_WE = 1;
         memWE2 = 0;
         memRDEN2 = 0;
-    // decode outputs based off input OpCode  
+    // decode outputs based off input OpCode
         case (ir[6:0])
             7'b0110111: begin // lui
                 ALU_FUN = 4'b1001;
-                srcA_SEL = 2'b01; 
+                srcA_SEL = 2'b01;
                 srcB_SEL = 3'b000;
                 PC_SEL = 3'b000;
                 RF_SEL = 2'b11;
-            end        
+            end
             7'b0010011: begin // addi and slli
                 if (ir[14:12] == 3'b101) ALU_FUN = {ir[30], ir[14:12]}; // must check formatt of instruction
                 else ALU_FUN = {1'b0, ir[14:12]}; // concatenate for correct alu_fun value
-                srcA_SEL = 2'b00; 
+                srcA_SEL = 2'b00;
                 srcB_SEL = 3'b001;
                 PC_SEL = 3'b000;
                 RF_SEL = 2'b11;
             end
             7'b0110011: begin // slt and xor
                 ALU_FUN = {ir[30], ir[14:12]};
-                srcA_SEL = 2'b00; 
+                srcA_SEL = 2'b00;
                 srcB_SEL = 3'b000;
                 PC_SEL = 3'b000;
                 RF_SEL = 2'b11;
             end
-            7'b1100011: begin //beq 
+            7'b1100011: begin //beq
                 ALU_FUN = 4'b0000;
-                srcA_SEL = 2'b00; 
+                srcA_SEL = 2'b00;
                 srcB_SEL = 3'b000;
                 if (br_EQ) PC_SEL = 3'b010; //check if branch is taken for PC control
                 else PC_SEL = 3'b000; //proceed like normal if condition evaluates as false
@@ -77,10 +81,10 @@ module CU_Decoder(
                 memWE2 = 1;
                 memRDEN2 = 0;
             end
-            7'b1100011: RF_WE = 0; // B-type 
-            
-     
-            default: ALU_FUN = 4'b0000; // defaul signals, ALU_FUN = 4'b0000;
+            7'b1100011: RF_WE = 0; // B-type
+
+
+            default: ALU_FUN = 4'b0000; // default signals, ALU_FUN = 4'b0000;
         endcase
-    end  
+    end
 endmodule
