@@ -41,6 +41,7 @@ typedef struct packed{
 } instr_t;
 
 module HazardDetectionUnit(
+    input instr_t ID,
     input instr_t EX,
     input instr_t MEM,
     input instr_t WB,
@@ -50,7 +51,8 @@ module HazardDetectionUnit(
     output logic FmuxASel,
     output logic FmuxBSel,
     output logic PC_WE,
-    output logic WE_flag_out
+    output logic WE_flag_out,
+    output logic FlushFlag
 );
 
 always_comb begin
@@ -80,4 +82,19 @@ always_comb begin
         FmuxBSel = 1'b1;
     end
     
+end
+//FIX (add pcSEL to struct?)
+// Branch Predictor Hazard Detection & Flush
+always_comb begin
+    if (EX.PC_SEL != 0){
+        IF.PC_SEL = EX.PC_SEL;
+        FlushFlag = 1'b1;
+        ID.memWrite = 1'b0;
+        ID.regWrite = 1'b0;
+    }
+    else if(FlushFlag == 1'b1){
+        ID.memWrite = 1'b0;
+        ID.regWrite = 1'b0;
+        FlushFlag == 1'b0;
+    }
 end
