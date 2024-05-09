@@ -1,23 +1,37 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:  Isaac Lake
-// 
+// Company: Cal Poly SLO
+// Engineer:  Isaac Lake,
+//            Victoria Clemens,
+//            Sam Solano,
+//            Ethan Vosburg
+//
 // Create Date: 05/07/2024 01:55:47 PM
-// Design Name: 
+// Design Name: Otter Hazard Detection Unit
 // Module Name: HazardDetectionUnit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name: Otter Pipelining
+// Target Devices: Basys3
 // Description: This should be able to stall the pipeline if a hazard is detected
 //              and should flush out values if a branch is taken
-// Dependencies: 
-// 
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
+
+typedef enum logic [6:0] {
+  LUI    = 7'b0110111,
+  AUIPC  = 7'b0010111,
+  JAL    = 7'b1101111,
+  JALR   = 7'b1100111,
+  BRANCH = 7'b1100011,
+  LOAD   = 7'b0000011,
+  STORE  = 7'b0100011,
+  OP_IMM = 7'b0010011,
+  OP     = 7'b0110011,
+  SYSTEM = 7'b1110011
+} opcode_t;
 
 typedef struct packed{
     opcode_t opcode;
@@ -37,8 +51,8 @@ typedef struct packed{
     // added by v and sosa
     logic [31:0] mux_A_out;
     logic [31:0] mux_B_out;
-    
-} instr_t;
+    } instr_t;
+
 
 module HazardDetectionUnit(
     input instr_t ID,
@@ -55,46 +69,46 @@ module HazardDetectionUnit(
     output logic FlushFlag
 );
 
-always_comb begin
-
-    if(EX.rs1_used && MEM.rd_used && (EX.rs1_addr == MEM.rd_addr)) begin
-        if(MEM.opcode == LOAD && WE_flag ==1'b0)begin
-            PC_WE = 1'b0;
-            WE_flag_out = 1'b1;
-        end else begin
-            FmuxA = MEM.aluOut;
+    always_comb begin
+        if(EX.rs1_used && MEM.rd_used && (EX.rs1_addr == MEM.rd_addr)) begin
+            if(MEM.opcode == LOAD && WE_flag ==1'b0)begin
+                PC_WE = 1'b0;
+                WE_flag_out = 1'b1;
+            end else begin
+                FmuxA = MEM.aluOut;
+                FmuxASel = 1'b1;
+                PC_WE = 1'b1;
+            end
+        end
+        else if(EX.rs1_used && WB.rd_used && (EX.rs1_addr == WB.rd_addr)) begin
+            FmuxA = WB.aluOut;
             FmuxASel = 1'b1;
             PC_WE = 1'b1;
         end
-    end
-    else if(EX.rs1_used && WB.rd_used && (EX.rs1_addr == WB.rd_addr)) begin
-        FmuxA = WB.aluOut;
-        FmuxASel = 1'b1;
-        PC_WE = 1'b1;
-    end
 
-    if(EX.rs2_used && MEM.rd_used && (EX.rs2_addr == MEM.rd_addr)) begin
-        FmuxB = MEM.aluOut;
-        FmuxBSel = 1'b1;
+        if(EX.rs2_used && MEM.rd_used && (EX.rs2_addr == MEM.rd_addr)) begin
+            FmuxB = MEM.aluOut;
+            FmuxBSel = 1'b1;
+        end
+        else if(EX.rs2_used && WB.rd_used && (EX.rs2_addr == WB.rd_addr)) begin
+            FmuxB = WB.aluOut;
+            FmuxBSel = 1'b1;
+        end
     end
-    else if(EX.rs2_used && WB.rd_used && (EX.rs2_addr == WB.rd_addr)) begin
-        FmuxB = WB.aluOut;
-        FmuxBSel = 1'b1;
+    // FIX: (add pcSEL to struct?)
+    // Branch Predictor Hazard Detection & Flush
+    always_comb begin
+        if (EX.PC_SEL != 0) begin
+            IF.PC_SEL = EX.PC_SEL;
+            FlushFlag = 1'b1;
+            ID.memWrite = 1'b0;
+            ID.regWrite = 1'b0;
+        end
+        else if(FlushFlag == 1'b1) begin
+            ID.memWrite = 1'b0;
+            ID.regWrite = 1'b0;
+            FlushFlag = 1'b0;
+        end
     end
-    
-end
-//FIX (add pcSEL to struct?)
-// Branch Predictor Hazard Detection & Flush
-always_comb begin
-    if (EX.PC_SEL != 0){
-        IF.PC_SEL = EX.PC_SEL;
-        FlushFlag = 1'b1;
-        ID.memWrite = 1'b0;
-        ID.regWrite = 1'b0;
-    }
-    else if(FlushFlag == 1'b1){
-        ID.memWrite = 1'b0;
-        ID.regWrite = 1'b0;
-        FlushFlag == 1'b0;
-    }
-end
+endmodule
+
