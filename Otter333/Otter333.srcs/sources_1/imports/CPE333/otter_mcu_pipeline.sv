@@ -62,7 +62,7 @@ module otter_mcu_pipeline (
             cu_br_ltu, cu_pc_we, cu_rf_we, cu_memWE2, cu_memRDEN1, cu_memRDEN2,
                 cu_reset, int_taken, mret_exec, csr_CU;
   wire [31:0] csr_pc_mepc, csr_pc_mtvec, csr_rd, mux_a_out, mux_b_out, U_imm,
-                    I_imm, S_imm, B_imm, J_imm, RF_MUX_out, out_data2, ir, sreg1, sreg2, 
+                    I_imm, S_imm, B_imm, J_imm, RF_MUX_out, out_data2, ir, sreg1, sreg2,
                         alu_out, pcplus4, addr_pc_jal, addr_pc_branch, addr_pc_jalr, pc_out;
   wire [1:0] cu_rf_sel, mux_a_sel;
   wire [2:0] mux_b_sel, cu_pc_sel;
@@ -308,9 +308,9 @@ module otter_mcu_pipeline (
   // );
 
   // TODO: Finish passing Stage
-  always_ff @(posedge CLK) begin
-
-
-  end
+  // always_ff @(posedge CLK) begin
+  //
+  //
+  // end
 
 endmodule
