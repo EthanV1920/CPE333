@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Thu May  9 05:48:09 2024
+# Process ID: 6856
+# Current directory: Y:/CPE333/Otter333
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1912 Y:\CPE333\Otter333\Otter333.xpr
+# Log file: Y:/CPE333/Otter333/vivado.log
+# Journal file: Y:/CPE333/Otter333\vivado.jou
+# Running On: ETHANVOSBURAA6F, OS: Windows, CPU Frequency: 3200 MHz, CPU Physical cores: 2, Host memory: 34354 MB
+#-----------------------------------------------------------
+start_gui

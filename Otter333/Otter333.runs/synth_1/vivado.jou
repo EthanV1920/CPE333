@@ -3,8 +3,8 @@
 # SW Build 3900603 on Fri Jun 16 19:31:24 MDT 2023
 # IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
 # SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Thu Apr 25 21:55:30 2024
-# Process ID: 2704
+# Start of session at: Thu May  9 05:59:46 2024
+# Process ID: 2820
 # Current directory: Z:/Documents/git/CPE333/Otter333/Otter333.runs/synth_1
 # Command line: vivado.exe -log otter_mcu_pipeline.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source otter_mcu_pipeline.tcl
 # Log file: Z:/Documents/git/CPE333/Otter333/Otter333.runs/synth_1/otter_mcu_pipeline.vds
