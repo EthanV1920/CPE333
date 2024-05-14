@@ -49,17 +49,24 @@ module CU_Decoder(
             7'b0110111: begin // lui
                 ALU_FUN = 4'b1001;
                 srcA_SEL = 2'b01;
-                srcB_SEL = 3'b000;
+                srcB_SEL = 3'b000;  
                 PC_SEL = 3'b000;
                 RF_SEL = 2'b11;
             end
-            7'b0010011: begin // addi and slli
-                if (ir[14:12] == 3'b101) ALU_FUN = {ir[30], ir[14:12]}; // must check formatt of instruction
-                else ALU_FUN = {1'b0, ir[14:12]}; // concatenate for correct alu_fun value
+            7'b0010011: begin // I types
+            
+                if (ir[14:12] == 3'b101) begin
+                    ALU_FUN = {ir[30], ir[14:12]}; // must check formatt of instruction
+                end
+                else begin
+                    ALU_FUN = {1'b0, ir[14:12]}; // concatenate for correct alu_fun value
+//                      ALU_FUN = 4'b0000;
+                end
                 srcA_SEL = 2'b00;
                 srcB_SEL = 3'b001;
                 PC_SEL = 3'b000;
                 RF_SEL = 2'b11;
+                RF_WE = 1;
             end
             7'b0110011: begin // slt and xor
                 ALU_FUN = {ir[30], ir[14:12]};
@@ -81,10 +88,16 @@ module CU_Decoder(
                 memWE2 = 1;
                 memRDEN2 = 0;
             end
-            7'b1100011: RF_WE = 0; // B-type
+            7'b1100011: begin
+                RF_WE = 0; // B-type
+            end
 
 
-            default: ALU_FUN = 4'b0000; // default signals, ALU_FUN = 4'b0000;
+            default: begin 
+            ALU_FUN = 4'b0000; // default signals, ALU_FUN = 4'b0000;
+            RF_WE = 1;
+            end
         endcase
+        $display("ir: %h, rf sel: %b", ir, RF_SEL);
     end
 endmodule

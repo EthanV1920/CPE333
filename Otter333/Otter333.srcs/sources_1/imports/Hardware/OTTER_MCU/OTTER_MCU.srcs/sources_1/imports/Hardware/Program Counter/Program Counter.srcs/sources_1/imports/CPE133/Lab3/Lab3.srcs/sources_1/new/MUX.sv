@@ -43,6 +43,6 @@ module MUX(
        else
        // default value to prevent latches and make sure there's no issues 
        // with the input (should never be used as output)
-            MUX_Out = 32'hFFFFFFFF; 
+            MUX_Out = 32'hDEADBEEF; 
     end
 endmodule 

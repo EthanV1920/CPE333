@@ -36,6 +36,6 @@ module ALU_MUX_B(
        else
        // default value to prevent latches and make sure there's no issues 
        // with the input (should never be used as output)
-            ALUmuxB_out = 32'hFFFFFFFF; 
+            ALUmuxB_out = 32'h00000000; 
     end
 endmodule

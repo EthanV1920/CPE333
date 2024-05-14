@@ -27,9 +27,9 @@ module PCregister(
     always_ff @ (posedge CLK) 
     begin
         if(PC_RST)
-            PC_COUNT <= 32'h0000; //Reset sets the output (count) to zero to restart machine code with first command
+            PC_COUNT = 32'h0000; //Reset sets the output (count) to zero to restart machine code with first command
         else if (PC_WE)  //Write Enable sets the output to the input value when PC_WE = '1'
-            PC_COUNT <= PC_DIN; //Allows loading of input value to the output
+            PC_COUNT = PC_DIN; //Allows loading of input value to the output
         PCP4 = PC_COUNT + 4;
     end
  

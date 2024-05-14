@@ -29,12 +29,32 @@ module ProgramCounter(
     input [31:0] MTVEC,
     input [31:0] MEPC,
     input [2:0] PC_SEL,
-    output [31:0] pc_count
+    output reg [31:0] pc_count
     );
     
-    logic [31:0] plus4, mux_pc;
+    logic [31:0] plus4; 
+    logic [31:0] mux_pc;
+    logic [2:0] pcSel;
     
-    MUX PCMUX (.MUX_A(plus4), .MUX_B(JALR), .MUX_C(BRANCH), .MUX_D(JAL), .MUX_E(MTVEC), .MUX_F(MEPC), .MUX_SEL(PC_SEL), .MUX_Out(mux_pc));
+    assign pcSel = 3'b000;
+//    assign pc_count = 32'b0;
+
+
+    assign plus4 = 32'b0;
+
+
+//    always_comb begin
+//        if(pc_rst) begin
+//            pcSel = 3'b000;
+////            plus4 = 32'b0;
+//        end
+//        else
+//            pcSel = PC_SEL;
+//    end
+    
+    
+    
+    MUX PCMUX (.MUX_A(plus4), .MUX_B(JALR), .MUX_C(BRANCH), .MUX_D(JAL), .MUX_E(MTVEC), .MUX_F(MEPC), .MUX_SEL(pcSel), .MUX_Out(mux_pc));
     PCregister pc_register (.PC_RST(pc_rst), .PC_WE(pc_we), .PC_DIN(mux_pc), .CLK(clk), .PC_COUNT(pc_count), .PCP4(plus4));
        
 endmodule
