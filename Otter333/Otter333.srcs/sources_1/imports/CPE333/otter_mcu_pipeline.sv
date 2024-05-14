@@ -75,16 +75,12 @@ module otter_mcu_pipeline (
   logic [31:0] if_de_pc;
   logic [31:0] if_de_reg;
 
-  always_ff @(posedge CLK) begin
-    if_de_pc <= pc_out;
-  end
-
   assign PC_WE    = 1'b1;  //Hardwired high, assuming no hazard
   assign memRDEN1 = 1'b1;  //Fetch new instruction every cycle
 
   ProgramCounter otter_PC (
       .pc_rst(cu_reset),
-      .pc_we(cu_pc_we),
+      .pc_we(PC_WE),
       .clk(CLK),
       .JALR(addr_pc_jalr),
       .BRANCH(addr_pc_branch),
@@ -94,22 +90,10 @@ module otter_mcu_pipeline (
       .PC_SEL(cu_pc_sel),
       .pc_count(pc_out)
   );
-
-  // Memory otter_memory (
-  //     .MEM_ADDR2(alu_out),
-  //     .MEM_DIN2(sreg2),
-  //     .MEM_ADDR1(pc_out[15:2]),
-  //     .MEM_RDEN1(cu_memRDEN1),
-  //     .MEM_RDEN2(cu_memRDEN2),
-  //     .MEM_WE2(cu_memWE2),
-  //     .MEM_SIZE(ir[13:12]),
-  //     .MEM_SIGN(ir[14]),
-  //     .MEM_DOUT2(ir),
-  //     .MEM_DOUT1(if_de_reg),
-  //     .IO_IN(IOBUS_IN),
-  //     .IO_WR(IOBUS_WR),
-  //     .MEM_CLK(CLK)
-  // );
+  
+    always_ff @(posedge CLK) begin
+    if_de_pc <= pc_out;
+  end
 
 
   //==== Instruction Decode ===========================================

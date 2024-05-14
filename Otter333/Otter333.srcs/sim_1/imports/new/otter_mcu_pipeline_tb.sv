@@ -29,15 +29,16 @@ module otter_mcu_pipeline_tb ();
   logic [31:0] IOBUS_ADDR_TB;
   logic IOBUS_WR_TB;
 
-  otter_mcu_pipeline_tb MCU (
+  otter_mcu_pipeline MCU (
       .CLK(CLK_TB),
       .INTR(INTR_TB),
       .RESET(RESET_TB),
-      .IOBUS_IN(IOBUT_IN_TB),
+      .IOBUS_IN(IOBUS_IN_TB),
       .IOBUS_OUT(IOBUS_OUT_TB),
       .IOBUS_ADDR(IOBUS_ADDR_TB),
       .IOBUS_WR(IOBUS_WR_TB)
   );
+  
 
   initial begin
       CLK_TB = 0;

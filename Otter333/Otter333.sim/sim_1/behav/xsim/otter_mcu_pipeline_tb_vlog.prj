@@ -12,8 +12,9 @@ sv xil_defaultlib  \
 "../../../../Otter333.srcs/sources_1/imports/Hardware/Program Counter/Program Counter.srcs/sources_1/new/ProgramCounter.sv" \
 "../../../../Otter333.srcs/sources_1/imports/Hardware/MUX/RF_MUX.sv" \
 "../../../../Otter333.srcs/sources_1/imports/Hardware/RegFile/RegFile.srcs/sources_1/new/RegFile.sv" \
-"../../../../Otter333.srcs/sources_1/imports/Hardware/otter_memory_v1_07.sv" \
 "../../../../Otter333.srcs/sources_1/imports/CPE333/otter_mcu_pipeline.sv" \
+"../../../../Otter333.srcs/sources_1/imports/Hardware/otter_memory_v1_07.sv" \
+"../../../../Otter333.srcs/sim_1/imports/new/otter_mcu_pipeline_tb.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
