@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Mon May 13 22:34:00 2024
-# Process ID: 24944
-# Current directory: C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.runs/synth_1
+# Start of session at: Tue May 14 13:06:58 2024
+# Process ID: 5364
+# Current directory: Z:/Desktop/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1
 # Command line: vivado.exe -log Pipeline_Otter.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Pipeline_Otter.tcl
-# Log file: C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.vds
-# Journal file: C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.runs/synth_1\vivado.jou
-# Running On: MSI, OS: Windows, CPU Frequency: 2918 MHz, CPU Physical cores: 4, Host memory: 16867 MB
+# Log file: Z:/Desktop/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.vds
+# Journal file: Z:/Desktop/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1\vivado.jou
+# Running On: ISAACLAKE1E4E, OS: Windows, CPU Frequency: 3200 MHz, CPU Physical cores: 4, Host memory: 6436 MB
 #-----------------------------------------------------------
 source Pipeline_Otter.tcl -notrace

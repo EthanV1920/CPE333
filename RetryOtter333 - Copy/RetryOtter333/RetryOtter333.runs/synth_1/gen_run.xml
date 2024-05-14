@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1715664837" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Pipeline_Otter.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1715717205" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Pipeline_Otter.dcp">
   <File Type="PA-TCL" Name="Pipeline_Otter.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Pipeline_Otter_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Pipeline_Otter_reports.tcl"/>
@@ -40,6 +40,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/Decoder.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/HazardDetectionUnit.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -109,9 +116,27 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../lab2redo.mem">
+    <File Path="$PSRCDIR/sources_1/imports/memFiles/lab2.mem">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../memFiles/lab2.mem"/>
+        <Attr Name="ImportTime" Val="1715705613"/>
         <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/FMuxA.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/FMuxB.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
