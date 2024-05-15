@@ -20,23 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FMuxA(
+module FMuxA (
     input [31:0] FMuxA,
     input [31:0] MuxA_out,
     input FMuxA_SEL,
     output logic [31:0] FMuxA_out
-    );
-    
-    always_comb begin
-    
-        if(FMuxA_SEL == 1) begin
-            FMuxA_out = FMuxA;
-        end
-        else begin
-            FMuxA_out = MuxA_out;
-        end
-    
+);
+
+  always_comb begin
+
+    if (FMuxA_SEL == 1) begin
+      FMuxA_out = FMuxA;
+    end else begin
+      FMuxA_out = MuxA_out;
     end
-    
+
+  end
+
 endmodule
-    
+
