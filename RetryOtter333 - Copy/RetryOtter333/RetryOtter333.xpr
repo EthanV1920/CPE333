@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
 <!-- Product Version: Vivado v2023.1.1 (64-bit)                              -->
+=======
+<!-- Product Version: Vivado v2023.1 (64-bit)                              -->
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
 <!--                                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
 <Project Product="Vivado" Version="7" Minor="63" Path="Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr">
+=======
+<Project Product="Vivado" Version="7" Minor="63" Path="Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.xpr">
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="bb5e7f6a56b944fd81adfa65edd54485"/>
@@ -58,7 +66,11 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
     <Option Name="WTXSimLaunchSim" Val="108"/>
+=======
+    <Option Name="WTXSimLaunchSim" Val="163"/>
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -124,13 +136,18 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
       <File Path="$PSRCDIR/sources_1/new/FMuxA.sv">
+=======
+      <File Path="$PSRCDIR/sources_1/new/HDU.sv">
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
       <File Path="$PSRCDIR/sources_1/new/FMuxB.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -139,6 +156,9 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/HazardDetectionUnit.sv">
+=======
+      <File Path="$PSRCDIR/sources_1/new/MUX.sv">
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -210,12 +230,27 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/memFiles/lab2.mem">
         <FileInfo>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
           <Attr Name="ImportPath" Val="$PPRDIR/../../memFiles/lab2.mem"/>
+=======
+          <Attr Name="ImportPath" Val="$PPRDIR/../memFiles/lab2.mem"/>
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
           <Attr Name="ImportTime" Val="1715705613"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr
+=======
+      <File Path="$PSRCDIR/sources_1/imports/memFiles/lab2redo.mem">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../memFiles/lab2redo.mem"/>
+          <Attr Name="ImportTime" Val="1715914474"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.xpr
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="Pipeline_Otter"/>

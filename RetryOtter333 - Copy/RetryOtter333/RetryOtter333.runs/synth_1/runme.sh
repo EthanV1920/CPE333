@@ -25,7 +25,11 @@ else
 fi
 export LD_LIBRARY_PATH
 
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/runme.sh
 HD_PWD='Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1'
+=======
+HD_PWD='Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.runs/synth_1'
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/runme.sh
 cd "$HD_PWD"
 
 HD_LOG=runme.log

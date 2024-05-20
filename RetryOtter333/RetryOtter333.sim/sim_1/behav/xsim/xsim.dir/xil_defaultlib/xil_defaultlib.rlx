@@ -1,0 +1,20 @@
+0.7
+2020.2
+May  7 2023
+15:24:31
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.sim/sim_1/behav/xsim/glbl.v,1715913622,verilog,,,,glbl,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sim_1/new/Pipeline_Otter_tb.sv,1715913622,systemVerilog,,,,Pipeline_Otter_tb,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv,1715913622,systemVerilog,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sim_1/new/Pipeline_Otter_tb.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv;Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv,,$unit_ALU_sv_725046792;ALU,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv,,BranchAddGen,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv,,BranchCondGen,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv,,Decoder,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v,1715913622,verilog,,,,ImmedGen,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv,1715914521,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v,,Memory,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v,,MUXA,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv,,MUXB,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv,,PC,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv,,PCTOP,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv,,PC_MUX,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv,1715914885,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv,,Pipeline_Otter,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv,,RFMUX,,uvm,,,,,,
+Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv,1715913622,systemVerilog,,Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sim_1/new/Pipeline_Otter_tb.sv,,RegFile,,uvm,,,,,,

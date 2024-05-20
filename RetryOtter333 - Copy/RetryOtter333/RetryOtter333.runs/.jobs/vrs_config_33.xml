@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/.jobs/vrs_config_33.xml
 	<Run Id="synth_1" LaunchDir="Z:/Desktop/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+=======
+	<Run Id="synth_1" LaunchDir="Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/.jobs/vrs_config_33.xml
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>

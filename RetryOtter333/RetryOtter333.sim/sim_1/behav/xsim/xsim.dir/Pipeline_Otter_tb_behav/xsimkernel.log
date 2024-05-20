@@ -1,0 +1,7 @@
+Running: xsim.dir/Pipeline_Otter_tb_behav/xsimk.exe -simmode gui -wdb Pipeline_Otter_tb_behav.wdb -simrunnum 0 -socket 51667
+Design successfully loaded
+Design Loading Memory Usage: 26160 KB (Peak: 26160 KB)
+Design Loading CPU Usage: 46 ms
+Simulation completed
+Simulation Memory Usage: 27696 KB (Peak: 27696 KB)
+Simulation CPU Usage: 140 ms

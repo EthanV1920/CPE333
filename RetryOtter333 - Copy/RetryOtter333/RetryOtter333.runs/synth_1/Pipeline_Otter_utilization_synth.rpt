@@ -1,8 +1,14 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | Tool Version : Vivado v.2023.1.1 (win64) Build 3900603 Fri Jun 16 19:31:24 MDT 2023
 | Date         : Tue May 14 14:39:32 2024
 | Host         : ETHANVOSBURAA6F running 64-bit major release  (build 9200)
+=======
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Sun May 19 18:11:31 2024
+| Host         : ISAACLAKE1E4E running 64-bit major release  (build 9200)
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | Command      : report_utilization -file Pipeline_Otter_utilization_synth.rpt -pb Pipeline_Otter_utilization_synth.pb
 | Design       : Pipeline_Otter
 | Device       : xc7a35ticpg236-1L
@@ -31,6 +37,7 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | Slice LUTs*                | 1253 |     0 |          0 |     20800 |  6.02 |
 |   LUT as Logic             | 1107 |     0 |          0 |     20800 |  5.32 |
 |   LUT as Memory            |  146 |     0 |          0 |      9600 |  1.52 |
@@ -40,6 +47,17 @@ Table of Contents
 |   Register as Flip Flop    |  549 |     0 |          0 |     41600 |  1.32 |
 |   Register as Latch        |    1 |     0 |          0 |     41600 | <0.01 |
 | F7 Muxes                   |  130 |     0 |          0 |     16300 |  0.80 |
+=======
+| Slice LUTs*                | 1278 |     0 |          0 |     20800 |  6.14 |
+|   LUT as Logic             | 1128 |     0 |          0 |     20800 |  5.42 |
+|   LUT as Memory            |  150 |     0 |          0 |      9600 |  1.56 |
+|     LUT as Distributed RAM |   48 |     0 |            |           |       |
+|     LUT as Shift Register  |  102 |     0 |            |           |       |
+| Slice Registers            |  484 |     0 |          0 |     41600 |  1.16 |
+|   Register as Flip Flop    |  478 |     0 |          0 |     41600 |  1.15 |
+|   Register as Latch        |    6 |     0 |          0 |     41600 |  0.01 |
+| F7 Muxes                   |  131 |     0 |          0 |     16300 |  0.80 |
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | F8 Muxes                   |   64 |     0 |          0 |      8150 |  0.79 |
 +----------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -59,9 +77,15 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | 1     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 549   |          Yes |       Reset |            - |
+=======
+| 6     |          Yes |           - |        Reset |
+| 0     |          Yes |         Set |            - |
+| 478   |          Yes |       Reset |            - |
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 +-------+--------------+-------------+--------------+
 
 
@@ -120,7 +144,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| BUFGCTRL   |    1 |     0 |          0 |        32 |  3.13 |
+| BUFGCTRL   |    2 |     0 |          0 |        32 |  6.25 |
 | BUFIO      |    0 |     0 |          0 |        20 |  0.00 |
 | MMCME2_ADV |    0 |     0 |          0 |         5 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |          0 |         5 |  0.00 |
@@ -154,6 +178,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | LUT6     |  658 |                 LUT |
 | FDRE     |  549 |        Flop & Latch |
 | LUT5     |  194 |                 LUT |
@@ -162,16 +187,31 @@ Warning! LUT value is adjusted to account for LUT combining.
 | MUXF7    |  130 |               MuxFx |
 | SRL16E   |   98 |  Distributed Memory |
 | LUT2     |   72 |                 LUT |
+=======
+| LUT6     |  633 |                 LUT |
+| FDRE     |  478 |        Flop & Latch |
+| LUT4     |  240 |                 LUT |
+| LUT5     |  229 |                 LUT |
+| MUXF7    |  131 |               MuxFx |
+| SRL16E   |  102 |  Distributed Memory |
+| LUT2     |   73 |                 LUT |
+| LUT3     |   70 |                 LUT |
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | RAMD32   |   68 |  Distributed Memory |
 | OBUF     |   65 |                  IO |
 | MUXF8    |   64 |               MuxFx |
-| CARRY4   |   40 |          CarryLogic |
+| CARRY4   |   51 |          CarryLogic |
 | IBUF     |   34 |                  IO |
 | RAMS32   |   20 |  Distributed Memory |
 | RAMB36E1 |   16 |        Block Memory |
+| LDCE     |    6 |        Flop & Latch |
 | LUT1     |    2 |                 LUT |
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 | LDCE     |    1 |        Flop & Latch |
 | BUFG     |    1 |               Clock |
+=======
+| BUFG     |    2 |               Clock |
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter_utilization_synth.rpt
 +----------+------+---------------------+
 
 

@@ -4,7 +4,11 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
   variable script "Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl"
+=======
+  variable script "Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl"
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
   variable category "vivado_synth"
 }
 
@@ -70,16 +74,21 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 set_param checkpoint.writeSynthRtdsInDcp 1
 set_param synth.incrementalSynthesisCache C:/Users/ethanvosburg/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-4108-ETHANVOSBURAA6F/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
+=======
+set_msg_config -id {Common 17-41} -limit 10000000
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35ticpg236-1L
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 set_property webtalk.parent_dir {Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.cache/wt} [current_project]
 set_property parent.project_path {Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
@@ -108,6 +117,38 @@ read_verilog -library xil_defaultlib -sv {
   {Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv}
 }
 read_verilog -library xil_defaultlib {{Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v}}
+=======
+set_property webtalk.parent_dir Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.cache/wt [current_project]
+set_property parent.project_path Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.xpr [current_project]
+set_property default_lib xil_defaultlib [current_project]
+set_property target_language Verilog [current_project]
+set_property ip_output_repo z:/Desktop/CPE333/RetryOtter333/RetryOtter333.cache/ip [current_project]
+set_property ip_cache_permissions {read write} [current_project]
+OPTRACE "Creating in-memory project" END { }
+OPTRACE "Adding files" START { }
+read_mem {
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/imports/memFiles/lab2.mem
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/imports/memFiles/lab2redo.mem
+}
+read_verilog -library xil_defaultlib -sv {
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/HDU.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MUX.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv
+  Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv
+}
+read_verilog -library xil_defaultlib Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -119,7 +160,11 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
+<<<<<<< Updated upstream:RetryOtter333 - Copy/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 read_checkpoint -auto_incremental -incremental {Z:/Documents/git/CPE333/RetryOtter333 - Copy/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp}
+=======
+read_checkpoint -auto_incremental -incremental Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp
+>>>>>>> Stashed changes:RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
