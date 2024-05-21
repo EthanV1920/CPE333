@@ -71,7 +71,7 @@ module Memory (
   (* ram_decomp = "power" *)logic [31:0] memory [0:16383];
 
   initial begin
-    $readmemh("lab2redo.mem", memory, 0, 16383);
+    $readmemh("Test_All.mem", memory, 0, 16383);
   end
 
   assign wordAddr2  = MEM_ADDR2[15:2];

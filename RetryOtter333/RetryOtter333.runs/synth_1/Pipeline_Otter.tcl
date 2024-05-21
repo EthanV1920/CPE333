@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl"
+  variable script "Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.tcl"
   variable category "vivado_synth"
 }
 
@@ -76,31 +76,33 @@ create_project -in_memory -part xc7a35ticpg236-1L
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.cache/wt [current_project]
-set_property parent.project_path C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.xpr [current_project]
+set_property webtalk.parent_dir Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.cache/wt [current_project]
+set_property parent.project_path Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.cache/ip [current_project]
+set_property ip_output_repo z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_mem C:/Users/samue/OneDrive/Desktop/CPE_333/lab2redo.mem
+read_mem Z:/Documents/git/CPE333/memFiles/lab2.mem
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv
-  C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv
+  Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv
 }
-read_verilog -library xil_defaultlib C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v
+read_verilog -library xil_defaultlib Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -112,7 +114,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/samue/OneDrive/Desktop/CPE_333/RetryOtter333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp
+read_checkpoint -auto_incremental -incremental Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

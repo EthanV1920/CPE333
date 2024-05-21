@@ -20,41 +20,36 @@ module Pipeline_Otter (
 );
 
   logic cu_br_eq, cu_br_lt, cu_br_ltu, cu_memRDEN1, FmuxASel, FmuxBSel, FlushFlag, PC_WE;
-                
+
   logic [31:0] csr_pc_mepc, csr_pc_mtvec, csr_rd, U_imm, I_imm,
                S_imm, B_imm, J_imm, addr_pc_jal, addr_pc_branch, addr_pc_jalr,
                FmuxA, FmuxB, MuxA_out, MuxB_out;
-               
-  logic [2:0] cu_pc_sel, flushCount;
-  
-  
+
+  logic [2:0] cu_pc_sel;
+  logic [1:0] flushCount;
+
+
   //added by me
   logic [31:0] PCMuxOut;
   logic [2:0] muxB_SEL;
   logic [1:0] muxA_SEL;
   logic [31:0] pcp4Holder;
-  
+
     instr_t fetch_struct;
     instr_t decode_struct;
     instr_t execute_struct;
     instr_t mem_struct;
     instr_t write_struct;
-    instr_t HDU_fetch_out;
 
   //==== Instruction Fetch ===========================================
-    always_comb begin
-        if(RESET == 1'b1)begin
-            PC_WE = 1'b1;
-        end
-    end
 
     PCTOP MyPCTOP(
        .PC_RST(RESET),
        .PC_WE(PC_WE), 
-       .JALR(addr_pc_jalr),
-       .BRANCH(addr_pc_branch), 
-       .JAL(addr_pc_jal),
-       .PC_SEL(execute_struct.PC_SEL),
+       .JALR(mem_struct.JALR),
+       .BRANCH(mem_struct.BRANCH), 
+       .JAL(mem_struct.JAL),
+       .PC_SEL(mem_struct.PC_SEL),
        .CLK(CLK), 
        .MTVEC(csr_pc_mtvec),
        .MEPC(csr_pc_mepc),
@@ -66,10 +61,10 @@ module Pipeline_Otter (
 
     assign cu_memRDEN1 = 1'b1;  //Fetch new instruction every cycle
     assign fetch_struct.IOBUS_in = IOBUS_IN;
-    
+
     logic [31:0] tempDout2;
     logic [31:0] tempDout1;
-  
+
   //OG ONE
      Memory Otter_Memory (
        .MEM_ADDR2(mem_struct.alu_result),
@@ -119,16 +114,13 @@ module Pipeline_Otter (
     assign fetch_struct.rd_addr = fetch_struct.ir[11:7];
 
 
-
-   
-
   //==== Instruction Decode ===========================================
 
-    
+
 //    always_ff @(posedge CLK) begin
 //        decode_struct <= fetch_struct;
 //      end
-      
+
     always_ff @(posedge CLK) begin
         decode_struct.pc <= fetch_struct.pc;
         decode_struct.opcode <= fetch_struct.opcode;
@@ -140,7 +132,67 @@ module Pipeline_Otter (
         decode_struct.IOBUS_in <= fetch_struct.IOBUS_in;
         decode_struct.IOBUS_wr <= fetch_struct.IOBUS_wr;
       end
-      
+
+
+  always_ff @(posedge CLK) begin
+      case (decode_struct.opcode)
+          LUI: begin 
+            decode_struct.rs1_used <= 1'b0;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+          end
+          AUIPC: begin 
+            decode_struct.rs1_used <= 1'b0;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+          end
+          JAL: begin
+            decode_struct.rs1_used <= 1'b0;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+        end
+          JALR: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+        end
+          BRANCH: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b1;
+            decode_struct.rd_used <= 1'b0;
+        end
+          LOAD: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+        end
+          STORE: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b1;
+            decode_struct.rd_used <= 1'b0;
+        end
+        OP_IMM: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+        end
+          OP: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b1;
+            decode_struct.rd_used <= 1'b1;
+        end
+          SYSTEM: begin
+            decode_struct.rs1_used <= 1'b1;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b1;
+        end 
+          default: begin
+            decode_struct.rs1_used <= 1'b0;
+            decode_struct.rs2_used <= 1'b0;
+            decode_struct.rd_used <= 1'b0;
+        end
+    endcase
+end
       logic [3:0] tempFun;
       logic tempMemWrite;
       logic [1:0] tempRFSEL;
@@ -165,25 +217,19 @@ module Pipeline_Otter (
       .memWrite(tempMemWrite),
       .memRDEN2(tempMemRead)
   );
-  
+
 HDU otterHazards(
     .ID(fetch_struct),
     .EX(execute_struct),
-    .MEM(memory_struct),
+    .MEM(mem_struct),
     .WB(write_struct),
     .FmuxA(FmuxA),
     .FmuxB(FmuxB),
     .FmuxASel(FmuxASel),
     .FmuxBSel(FmuxBSel),
     .PC_WE(PC_WE),
-    .FlushFlag(FlushFlag),
-    .ID_out(HDU_fetch_out)
+    .FlushFlag(FlushFlag)
 );
-    always_comb begin
-        if(FlushFlag == 1)begin
-            flushCount = 2'b10;
-        end
-    end
 
     assign decode_struct.alu_fun = tempFun;
     assign decode_struct.memWrite = tempMemWrite; // create
@@ -191,8 +237,8 @@ HDU otterHazards(
     assign decode_struct.PC_SEL = tempPCSEL;
     assign decode_struct.memRead2 = tempMemRead;
     assign decode_struct.regWrite = tempRegWrite;
-  
-  
+
+
     logic [31:0] tempRS1;
     logic [31:0] tempRS2;
     logic [31:0] tempRfOut;
@@ -284,6 +330,9 @@ HDU otterHazards(
         execute_struct.rs1_addr <= decode_struct.rs1_addr;
         execute_struct.rs2_addr <= decode_struct.rs2_addr;
         execute_struct.rd_addr <= decode_struct.rd_addr;
+        execute_struct.rs1_used <= decode_struct.rs1_used;
+        execute_struct.rs2_used <= decode_struct.rs2_used;
+        execute_struct.rd_used <= decode_struct.rd_used;
         execute_struct.memRead2 <= decode_struct.memRead2;
         execute_struct.regWrite <= decode_struct.regWrite;
         execute_struct.ir <= decode_struct.ir;
@@ -330,9 +379,9 @@ HDU otterHazards(
       .PC(execute_struct.pc),
       .rs(execute_struct.rs1),
       //outs
-      .branch(addr_pc_branch), //change later
-      .jal(addr_pc_jal),    //change later
-      .jalr(addr_pc_jalr)   //change later
+      .branch(addr_pc_branch),
+      .jal(addr_pc_jal),
+      .jalr(addr_pc_jalr)
   );
 
 
@@ -348,13 +397,16 @@ HDU otterHazards(
             mem_struct.rs1_addr <= execute_struct.rs1_addr;
             mem_struct.rs2_addr <= execute_struct.rs2_addr;
             mem_struct.rd_addr <= execute_struct.rd_addr;
+            mem_struct.rs1_used <= execute_struct.rs1_used;
+            mem_struct.rs2_used <= execute_struct.rs2_used;
+            mem_struct.rd_used <= execute_struct.rd_used;
             mem_struct.memRead2 <= execute_struct.memRead2;
             mem_struct.regWrite <= execute_struct.regWrite;
             mem_struct.ir <= execute_struct.ir;
             mem_struct.memDout2 <= execute_struct.memDout2;
-            mem_struct.JALR <= execute_struct.JALR;
-            mem_struct.BRANCH <= execute_struct.BRANCH;
-            mem_struct.JAL <= execute_struct.JAL;
+            mem_struct.JALR <= addr_pc_jalr;
+            mem_struct.BRANCH <= addr_pc_branch;
+            mem_struct.JAL <= addr_pc_jal;
             mem_struct.rs1 <= execute_struct.rs1;
             mem_struct.PC_SEL <= execute_struct.PC_SEL;
             mem_struct.IOBUS_in <= execute_struct.IOBUS_in;
@@ -381,6 +433,9 @@ HDU otterHazards(
             write_struct.rs1_addr <= mem_struct.rs1_addr;
             write_struct.rs2_addr <= mem_struct.rs2_addr;
             write_struct.rd_addr <= mem_struct.rd_addr;
+            write_struct.rs1_used <= mem_struct.rs1_used;
+            write_struct.rs2_used <= mem_struct.rs2_used;
+            write_struct.rd_used <= mem_struct.rd_used;
             write_struct.memRead2 <= mem_struct.memRead2;
             write_struct.ir <= mem_struct.ir;
             write_struct.memDout2 <= mem_struct.memDout2;
@@ -398,16 +453,17 @@ HDU otterHazards(
             write_struct.muxB_out <= mem_struct.muxB_out;
             write_struct.rs2 <= mem_struct.rs2;
             write_struct.alu_result <= mem_struct.alu_result;
+            if(FlushFlag == 1)begin
+                flushCount <= 2'b10;
+            end
             if(flushCount>0)begin
                 write_struct.regWrite <= 1'b0;
-                flushCount-=1;
+                flushCount <= flushCount - 1;
             end
             else begin
-                write_struct.regWrite <=1'b1; 
+                write_struct.regWrite <=1'b1;
             end
      end
-
-    
 
   RFMUX otter_rf_mux (
       .RFmux0(write_struct.pc),
@@ -418,9 +474,6 @@ HDU otterHazards(
       //outs
       .RFmux_out(tempRfOut)
   );
-
-  
-  
 
 endmodule
 
