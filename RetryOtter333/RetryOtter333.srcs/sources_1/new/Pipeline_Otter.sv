@@ -23,7 +23,7 @@ module Pipeline_Otter (
 
   logic [31:0] csr_pc_mepc, csr_pc_mtvec, csr_rd, U_imm, I_imm,
                S_imm, B_imm, J_imm, addr_pc_jal, addr_pc_branch, addr_pc_jalr,
-               FmuxA, FmuxB, MuxA_out, MuxB_out;
+               FmuxA, FmuxB, MuxA_out, MuxB_out, FMuxA_out, FMuxB_out;
 
   logic [2:0] cu_pc_sel;
   logic [1:0] flushCount;
@@ -223,6 +223,7 @@ HDU otterHazards(
     .EX(execute_struct),
     .MEM(mem_struct),
     .WB(write_struct),
+    .reset(RESET),
     .FmuxA(FmuxA),
     .FmuxB(FmuxB),
     .FmuxASel(FmuxASel),
@@ -269,13 +270,16 @@ HDU otterHazards(
       .B_Type(B_imm),
       .J_Type(J_imm)
   );
-
-    logic [31:0] tempMuxBOUT;
-    logic [31:0] tempMuxAOUT;
+  
+  assign decode_struct.U_Type = U_imm;
+  assign decode_struct.I_Type = I_imm;
+  assign decode_struct.S_Type = S_imm;
+  assign decode_struct.B_Type = B_imm;
+  assign decode_struct.J_Type = J_imm;
 
   MUXA otter_alu_muxA (
       .ALUmuxA0(decode_struct.rs1),
-      .ALUmuxA1(U_imm),
+      .ALUmuxA1(decode_struct.U_Type),
       .ALUmuxA2(~decode_struct.rs1),
       .ALUmuxA_SEL(muxA_SEL),
       //outs
@@ -285,8 +289,8 @@ HDU otterHazards(
 
   MUXB otter_alu_muxB (
       .ALUmuxB0(decode_struct.rs2),
-      .ALUmuxB1(I_imm),
-      .ALUmuxB2(S_imm),
+      .ALUmuxB1(decode_struct.I_Type),
+      .ALUmuxB2(decode_struct.S_Type),
       .ALUmuxB3(decode_struct.pc),
       .ALUmuxB4(csr_rd),
       .ALUmuxB_SEL(muxB_SEL),
@@ -298,15 +302,18 @@ HDU otterHazards(
     .in1(MuxA_out),
     .in2(FmuxA),
     .MuxSel(FmuxASel),
-    .MuxOut(decode_struct.muxA_out)
+    .MuxOut(FMuxA_out)
   );
   
   MUX ForwardmuxB (
     .in1(MuxB_out),
     .in2(FmuxB),
     .MuxSel(FmuxBSel),
-    .MuxOut(decode_struct.muxB_out)
+    .MuxOut(FMuxB_out)
   );
+  
+  assign decode_struct.muxA_out = FMuxA_out;
+  assign decode_struct.muxB_out = FMuxB_out;
   
 //  always_comb begin
 //    execute_struct.muxB_out = tempMuxBOUT;
@@ -350,6 +357,11 @@ HDU otterHazards(
         execute_struct.muxA_out <= decode_struct.muxA_out;
         execute_struct.muxB_out <= decode_struct.muxB_out;
         execute_struct.rs2 <= decode_struct.rs2;
+        execute_struct.U_Type <= decode_struct.U_Type;
+        execute_struct.I_Type <= decode_struct.I_Type;
+        execute_struct.S_Type <= decode_struct.S_Type;
+        execute_struct.J_Type <= decode_struct.J_Type;
+        execute_struct.B_Type <= decode_struct.B_Type;
      end
   
     logic [31:0] tempALU;
@@ -359,8 +371,10 @@ HDU otterHazards(
       .srcB(execute_struct.muxB_out),
       .alu_fun(execute_struct.alu_fun),
       //outs
-      .alu_result(execute_struct.alu_result)
+      .alu_result(tempALU)
   );
+  
+  assign execute_struct.alu_result = tempALU;
   
 
   BranchCondGen otter_cond_gen (
@@ -373,9 +387,9 @@ HDU otterHazards(
   );
   
   BranchAddGen otter_addr_gen (
-      .B_Type(B_imm),
-      .J_Type(J_imm),
-      .I_Type(I_imm),
+      .B_Type(execute_struct.B_Type),
+      .J_Type(execute_struct.J_Type),
+      .I_Type(execute_struct.I_Type),
       .PC(execute_struct.pc),
       .rs(execute_struct.rs1),
       //outs
@@ -418,6 +432,11 @@ HDU otterHazards(
             mem_struct.muxB_out <= execute_struct.muxB_out;
             mem_struct.rs2 <= execute_struct.rs2;
             mem_struct.alu_result <= execute_struct.alu_result;
+            mem_struct.U_Type <= execute_struct.U_Type;
+            mem_struct.I_Type <= execute_struct.I_Type;
+            mem_struct.S_Type <= execute_struct.S_Type;
+            mem_struct.J_Type <= execute_struct.J_Type;
+            mem_struct.B_Type <= execute_struct.B_Type;
         end
      
      assign IOBUS_ADDR = mem_struct.alu_result;
@@ -453,6 +472,11 @@ HDU otterHazards(
             write_struct.muxB_out <= mem_struct.muxB_out;
             write_struct.rs2 <= mem_struct.rs2;
             write_struct.alu_result <= mem_struct.alu_result;
+            write_struct.U_Type <= mem_struct.U_Type;
+            write_struct.I_Type <= mem_struct.I_Type;
+            write_struct.S_Type <= mem_struct.S_Type;
+            write_struct.J_Type <= mem_struct.J_Type;
+            write_struct.B_Type <= mem_struct.B_Type;
             if(FlushFlag == 1)begin
                 flushCount <= 2'b10;
             end

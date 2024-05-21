@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='Z:/Documents/git/CPE333/RetryOtter333/RetryOtter333.runs/synth_1'
+HD_PWD='Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

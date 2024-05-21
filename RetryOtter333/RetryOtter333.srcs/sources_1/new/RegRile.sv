@@ -50,12 +50,12 @@ logic [31:0] ram [0:31];
 //        $display("addr: ");
 //      end
 
-always@(posedge CLK)
-    begin
-    if(en == 1 && w_adr!=0)
-    begin 
-    ram[w_adr] <= w_data;;
+always@(posedge CLK) begin
+    if(en == 1 && w_adr!=0) begin
+     
+        ram[w_adr] <= w_data;
+    
     end
-    end
+end
 endmodule
 
