@@ -14,84 +14,96 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Pipeline_Otter.tcl -notrace
-create_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 473.477 ; gain = 163.367
-Command: read_checkpoint -auto_incremental -incremental Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 426.555 ; gain = 161.633
+Command: read_checkpoint -auto_incremental -incremental C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/utils_1/imports/synth_1/Pipeline_Otter.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top Pipeline_Otter -part xc7a35ticpg236-1L
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
-WARNING: [Vivado_Tcl 4-1809] The reference checkpoint is from an old version of Vivado; A full resynthesis flow will be run
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 10956
-INFO: [Synth 8-11241] undeclared symbol 'intTaken', assumed default net type 'wire' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:209]
+INFO: [Synth 8-7075] Helper process launched with PID 16296
+INFO: [Synth 8-11241] undeclared symbol 'validity', assumed default net type 'wire' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Cache.sv:50]
+INFO: [Synth 8-11241] undeclared symbol 'intTaken', assumed default net type 'wire' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:272]
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 920.406 ; gain = 414.098
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 869.820 ; gain = 410.270
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Pipeline_Otter' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:12]
-INFO: [Synth 8-6157] synthesizing module 'PCTOP' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv:22]
-INFO: [Synth 8-6157] synthesizing module 'PC_MUX' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:23]
-INFO: [Synth 8-226] default block is never used [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:38]
-INFO: [Synth 8-6155] done synthesizing module 'PC_MUX' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'PC' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'PCTOP' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv:22]
-INFO: [Synth 8-6157] synthesizing module 'Memory' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:48]
-INFO: [Synth 8-3876] $readmem data file 'Test_All.mem' is read successfully [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:74]
-INFO: [Synth 8-155] case statement is not full and has no default [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:95]
-INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:48]
-INFO: [Synth 8-6157] synthesizing module 'Decoder' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:23]
-INFO: [Synth 8-155] case statement is not full and has no default [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:196]
-INFO: [Synth 8-6155] done synthesizing module 'Decoder' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'HDU' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv:67]
-INFO: [Synth 8-6155] done synthesizing module 'HDU' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv:67]
-INFO: [Synth 8-6157] synthesizing module 'RegFile' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'RegFile' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'ImmedGen' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v:15]
-INFO: [Synth 8-6155] done synthesizing module 'ImmedGen' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v:15]
-INFO: [Synth 8-6157] synthesizing module 'MUXA' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v:15]
-INFO: [Synth 8-6155] done synthesizing module 'MUXA' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v:15]
-INFO: [Synth 8-6157] synthesizing module 'MUXB' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v:15]
-INFO: [Synth 8-6155] done synthesizing module 'MUXB' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v:15]
-INFO: [Synth 8-6157] synthesizing module 'MUX' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'MUX' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'ALU' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv:14]
-INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv:14]
-INFO: [Synth 8-6157] synthesizing module 'BranchCondGen' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv:15]
-INFO: [Synth 8-6155] done synthesizing module 'BranchCondGen' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv:15]
-INFO: [Synth 8-6157] synthesizing module 'BranchAddGen' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv:15]
-INFO: [Synth 8-6155] done synthesizing module 'BranchAddGen' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv:15]
-INFO: [Synth 8-6157] synthesizing module 'RFMUX' [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'RFMUX' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'Pipeline_Otter' (0#1) [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:12]
-WARNING: [Synth 8-3848] Net fetch_struct[alu_fun] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rs1_used] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rs2_used] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rd_used] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[memWrite] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[memRead2] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[regWrite] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rf_SEL] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[JALR] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[BRANCH] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[JAL] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[alu_result] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rs1] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[rs2] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[PC_SEL] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[muxB_out] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net fetch_struct[muxA_out] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
-WARNING: [Synth 8-3848] Net decode_struct[JALR] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
-WARNING: [Synth 8-3848] Net decode_struct[BRANCH] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
-WARNING: [Synth 8-3848] Net decode_struct[JAL] in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
-WARNING: [Synth 8-3848] Net csr_rd in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
-WARNING: [Synth 8-3848] Net intTaken in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:209]
-WARNING: [Synth 8-3848] Net csr_pc_mtvec in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
-WARNING: [Synth 8-3848] Net csr_pc_mepc in module/entity Pipeline_Otter does not have driver. [Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
+INFO: [Synth 8-6157] synthesizing module 'Pipeline_Otter' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:12]
+INFO: [Synth 8-6157] synthesizing module 'PCTOP' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv:22]
+INFO: [Synth 8-6157] synthesizing module 'PC_MUX' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:23]
+INFO: [Synth 8-226] default block is never used [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:38]
+INFO: [Synth 8-6155] done synthesizing module 'PC_MUX' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC_Mux.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PC.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'PCTOP' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/PCTOP.sv:22]
+INFO: [Synth 8-6157] synthesizing module 'InstructionMemory' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/InstructionMemory.sv:7]
+INFO: [Synth 8-3876] $readmem data file 'cacheTest.mem' is read successfully [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/InstructionMemory.sv:20]
+INFO: [Synth 8-6155] done synthesizing module 'InstructionMemory' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/InstructionMemory.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'CacheFSM' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/CacheFSM.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'CacheFSM' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/CacheFSM.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'Cache' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Cache.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'Cache' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Cache.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'Memory' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:48]
+INFO: [Synth 8-3876] $readmem data file 'cacheTest.mem' is read successfully [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:74]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:95]
+INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Memory.sv:48]
+INFO: [Synth 8-6157] synthesizing module 'Decoder' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:196]
+INFO: [Synth 8-6155] done synthesizing module 'Decoder' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Decoder.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'HDU' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv:72]
+INFO: [Synth 8-6155] done synthesizing module 'HDU' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv:72]
+INFO: [Synth 8-6157] synthesizing module 'RegFile' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'RegFile' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RegRile.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'ImmedGen' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'ImmedGen' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ImmedGen.v:15]
+INFO: [Synth 8-6157] synthesizing module 'MUXA' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'MUXA' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxA.v:15]
+INFO: [Synth 8-6157] synthesizing module 'MUXB' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'MUXB' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/MuxB.v:15]
+INFO: [Synth 8-6157] synthesizing module 'MUX' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'MUX' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv:14]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv:14]
+INFO: [Synth 8-6157] synthesizing module 'BranchCondGen' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'BranchCondGen' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchCondGen.sv:15]
+INFO: [Synth 8-6157] synthesizing module 'BranchAddGen' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'BranchAddGen' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/BranchAddGen.sv:15]
+INFO: [Synth 8-6157] synthesizing module 'RFMUX' [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'RFMUX' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/RFMUX.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'Pipeline_Otter' (0#1) [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:12]
+WARNING: [Synth 8-3848] Net fetch_struct[alu_fun] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rs1_used] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rs2_used] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rd_used] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[memWrite] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[memRead2] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[regWrite] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rf_SEL] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[JALR] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[BRANCH] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[JAL] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[alu_result] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rs1] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[rs2] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[PC_SEL] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[muxB_out] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[muxA_out] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[U_Type] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[I_Type] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[S_Type] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[B_Type] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net fetch_struct[J_Type] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:38]
+WARNING: [Synth 8-3848] Net decode_struct[JALR] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
+WARNING: [Synth 8-3848] Net decode_struct[BRANCH] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
+WARNING: [Synth 8-3848] Net decode_struct[JAL] in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:39]
+WARNING: [Synth 8-3848] Net csr_rd in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
+WARNING: [Synth 8-3848] Net intTaken in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:272]
+WARNING: [Synth 8-3848] Net csr_pc_mtvec in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
+WARNING: [Synth 8-3848] Net csr_pc_mepc in module/entity Pipeline_Otter does not have driver. [C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/Pipeline_Otter.sv:24]
 WARNING: [Synth 8-7129] Port Instruction[6] in module ImmedGen is either unconnected or has no load
 WARNING: [Synth 8-7129] Port Instruction[5] in module ImmedGen is either unconnected or has no load
 WARNING: [Synth 8-7129] Port Instruction[4] in module ImmedGen is either unconnected or has no load
@@ -194,19 +206,27 @@ WARNING: [Synth 8-7129] Port ID[ir][6] in module HDU is either unconnected or ha
 WARNING: [Synth 8-7129] Port ID[ir][5] in module HDU is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 1027.562 ; gain = 521.254
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 1029.512 ; gain = 569.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1027.562 ; gain = 521.254
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1029.512 ; gain = 569.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35ticpg236-1L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1027.562 ; gain = 521.254
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1029.512 ; gain = 569.961
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Synth 8-802] inferred FSM for state register 'PS_reg' in module 'CacheFSM'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             ST_READ_MEM |                                0 | 00000000000000000000000000000001
+           ST_READ_CACHE |                                1 | 00000000000000000000000000000000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'PS_reg' using encoding 'sequential' in module 'CacheFSM'
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
@@ -224,7 +244,7 @@ INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of 
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Memory:/memory_reg"
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 1032.371 ; gain = 526.062
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1116.328 ; gain = 656.777
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -234,11 +254,12 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input   32 Bit       Adders := 6     
 	   3 Input   32 Bit       Adders := 1     
+	   2 Input   13 Bit       Adders := 7     
 	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 43    
+	               32 Bit    Registers := 186   
 	                7 Bit    Registers := 4     
 	                5 Bit    Registers := 12    
 	                4 Bit    Registers := 3     
@@ -249,12 +270,13 @@ Detailed RTL Component Info :
 	             512K Bit	(16384 X 32 bit)          RAMs := 1     
 	             1024 Bit	(32 X 32 bit)          RAMs := 1     
 +---Muxes : 
+	   2 Input   32 Bit        Muxes := 11    
 	   9 Input   32 Bit        Muxes := 2     
 	  16 Input   32 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 10    
 	   4 Input   32 Bit        Muxes := 1     
 	   5 Input   32 Bit        Muxes := 1     
 	   2 Input   31 Bit        Muxes := 1     
+	  17 Input   25 Bit        Muxes := 1     
 	  11 Input    6 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 2     
 	   4 Input    4 Bit        Muxes := 1     
@@ -265,8 +287,8 @@ Detailed RTL Component Info :
 	   2 Input    2 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 1     
 	  11 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 27    
 	   9 Input    1 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 6     
 	   4 Input    1 Bit        Muxes := 1     
 	  11 Input    1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
@@ -286,44 +308,72 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Pipeline_Otter/Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "Otter_Memory/memory_reg"
+WARNING: [Synth 8-3332] Sequential element (memory_reg_mux_sel_b_pos_3) is unused and will be removed from module Memory.
+WARNING: [Synth 8-3332] Sequential element (memory_reg_mux_sel_b_pos_2) is unused and will be removed from module Memory.
+WARNING: [Synth 8-3332] Sequential element (memory_reg_mux_sel_b_pos_1) is unused and will be removed from module Memory.
+WARNING: [Synth 8-3332] Sequential element (memory_reg_mux_sel_b_pos_0) is unused and will be removed from module Memory.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:01:05 . Memory (MB): peak = 1276.070 ; gain = 769.762
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:28 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
+ROM: Preliminary Mapping Report
++------------------+------------+---------------+----------------+
+|Module Name       | RTL Object | Depth x Width | Implemented As | 
++------------------+------------+---------------+----------------+
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|InstructionMemory | ram        | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
+|Pipeline_Otter    | p_0_out    | 8192x22       | LUT            | 
++------------------+------------+---------------+----------------+
+
+
 Block RAM: Preliminary Mapping Report (see note below)
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name    | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Pipeline_Otter | Otter_Memory/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name  | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Otter_Memory | memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
 
 Distributed RAM: Preliminary Mapping Report (see note below)
-+---------------+------------------------+-----------+----------------------+--------------+
-|Module Name    | RTL Object             | Inference | Size (Depth x Width) | Primitives   | 
-+---------------+------------------------+-----------+----------------------+--------------+
-|Pipeline_Otter | otter_reg_file/ram_reg | Implied   | 32 x 32              | RAM32M x 12  | 
-+---------------+------------------------+-----------+----------------------+--------------+
++---------------+------------------------+-----------+----------------------+---------------+
+|Module Name    | RTL Object             | Inference | Size (Depth x Width) | Primitives    | 
++---------------+------------------------+-----------+----------------------+---------------+
+|Otter_Cache    | valid_bits_reg         | Implied   | 16 x 1               | RAM16X1S x 1  | 
+|Pipeline_Otter | otter_reg_file/ram_reg | Implied   | 32 x 32              | RAM32M x 12   | 
++---------------+------------------------+-----------+----------------------+---------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 ---------------------------------------------------------------------------------
@@ -334,26 +384,27 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1276.070 ; gain = 769.762
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:29 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Block RAM: Final Mapping Report
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name    | RTL Object              | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Pipeline_Otter | Otter_Memory/memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
-+---------------+-------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name  | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Otter_Memory | memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++-------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
 
 
 Distributed RAM: Final Mapping Report
-+---------------+------------------------+-----------+----------------------+--------------+
-|Module Name    | RTL Object             | Inference | Size (Depth x Width) | Primitives   | 
-+---------------+------------------------+-----------+----------------------+--------------+
-|Pipeline_Otter | otter_reg_file/ram_reg | Implied   | 32 x 32              | RAM32M x 12  | 
-+---------------+------------------------+-----------+----------------------+--------------+
++---------------+------------------------+-----------+----------------------+---------------+
+|Module Name    | RTL Object             | Inference | Size (Depth x Width) | Primitives    | 
++---------------+------------------------+-----------+----------------------+---------------+
+|Otter_Cache    | valid_bits_reg         | Implied   | 16 x 1               | RAM16X1S x 1  | 
+|Pipeline_Otter | otter_reg_file/ram_reg | Implied   | 32 x 32              | RAM32M x 12   | 
++---------------+------------------------+-----------+----------------------+---------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -362,39 +413,23 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance Otter_Memory/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:01:07 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:30 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -412,37 +447,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:04 ; elapsed = 00:01:19 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -476,60 +511,64 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |BUFG     |     1|
-|2     |CARRY4   |    51|
-|3     |LUT1     |     2|
-|4     |LUT2     |   103|
-|5     |LUT3     |   121|
-|6     |LUT4     |   279|
-|7     |LUT5     |   276|
-|8     |LUT6     |   664|
-|9     |MUXF7    |   140|
-|10    |MUXF8    |    64|
-|11    |RAM32M   |    10|
-|12    |RAM32X1D |     4|
-|13    |RAMB36E1 |    16|
-|14    |SRL16E   |    98|
-|15    |FDRE     |   535|
-|16    |IBUF     |    34|
-|17    |OBUF     |    65|
+|2     |CARRY4   |    63|
+|3     |LUT1     |    13|
+|4     |LUT2     |    85|
+|5     |LUT3     |   234|
+|6     |LUT4     |   157|
+|7     |LUT5     |   281|
+|8     |LUT6     |  1321|
+|9     |MUXF7    |   420|
+|10    |MUXF8    |   200|
+|11    |RAM16X1S |     1|
+|12    |RAM32M   |    10|
+|13    |RAM32X1D |     4|
+|14    |RAMB36E1 |    16|
+|15    |SRL16E   |    98|
+|16    |FDRE     |  3190|
+|17    |IBUF     |    34|
+|18    |OBUF     |    65|
 +------+---------+------+
 
 Report Instance Areas: 
-+------+-----------------+--------------+------+
-|      |Instance         |Module        |Cells |
-+------+-----------------+--------------+------+
-|1     |top              |              |  2463|
-|2     |  MyPCTOP        |PCTOP         |    55|
-|3     |    MyPC         |PC            |    55|
-|4     |  Otter_Memory   |Memory        |   750|
-|5     |  otter_ALU      |ALU           |   671|
-|6     |  otter_cond_gen |BranchCondGen |    89|
-|7     |  otter_reg_file |RegFile       |   166|
-|8     |  otter_rf_mux   |RFMUX         |    39|
-+------+-----------------+--------------+------+
++------+-----------------+------------------+------+
+|      |Instance         |Module            |Cells |
++------+-----------------+------------------+------+
+|1     |top              |                  |  6193|
+|2     |  ForwardmuxA    |MUX               |    70|
+|3     |  MyPCTOP        |PCTOP             |   256|
+|4     |    MyPC         |PC                |   256|
+|5     |  OtterImem      |InstructionMemory |   360|
+|6     |  Otter_Cache    |Cache             |  3933|
+|7     |  Otter_Memory   |Memory            |   484|
+|8     |  cachefsm       |CacheFSM          |     4|
+|9     |  otter_alu_muxB |MUXB              |    34|
+|10    |  otter_reg_file |RegFile           |    94|
++------+-----------------+------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:04 ; elapsed = 00:01:19 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 3293 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:04 ; elapsed = 00:01:19 . Memory (MB): peak = 1285.129 ; gain = 778.820
-Synthesis Optimization Complete : Time (s): cpu = 00:01:04 ; elapsed = 00:01:19 . Memory (MB): peak = 1285.129 ; gain = 778.820
+Synthesis finished with 0 errors, 0 critical warnings and 2398 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1332.734 ; gain = 873.184
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.089 . Memory (MB): peak = 1287.961 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 285 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 1332.734 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 714 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1319.812 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1332.734 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 14 instances were transformed.
+  A total of 15 instances were transformed.
+  RAM16X1S => RAM32X1S (inverted pins: WCLK) (RAMS32): 1 instance 
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
 
-Synth Design complete | Checksum: 4a76b860
+Synth Design complete | Checksum: 7dc46e64
 INFO: [Common 17-83] Releasing license: Synthesis
-118 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
+112 Infos, 134 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:11 ; elapsed = 00:01:26 . Memory (MB): peak = 1319.812 ; gain = 821.457
-INFO: [Common 17-1381] The checkpoint 'Z:/Desktop/CPE333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:36 . Memory (MB): peak = 1332.734 ; gain = 881.309
+INFO: [Common 17-1381] The checkpoint 'C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.runs/synth_1/Pipeline_Otter.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Pipeline_Otter_utilization_synth.rpt -pb Pipeline_Otter_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon May 20 20:59:31 2024...
+INFO: [Common 17-206] Exiting Vivado at Sun May 26 17:22:38 2024...

@@ -42,6 +42,16 @@ module Pipeline_Otter (
     instr_t write_struct;
 
   //==== Instruction Fetch ===========================================
+  
+    logic cacheStall, pcStall;
+    
+        always_comb begin
+        if(cacheStall || !pcStall)
+            PC_WE = 0;
+        else
+            PC_WE = 1;
+    end
+   
 
     PCTOP MyPCTOP(
        .PC_RST(RESET),
@@ -62,10 +72,61 @@ module Pipeline_Otter (
     assign cu_memRDEN1 = 1'b1;  //Fetch new instruction every cycle
     assign fetch_struct.IOBUS_in = IOBUS_IN;
 
+    logic [31:0] v0, v1, v2, v3, v4, v5, v6, v7, currInstruction;
+    logic cacheUpdate, cacheHit, cacheMiss;
+        
+     InstructionMemory OtterImem (
+        .a(fetch_struct.pc),
+        .w0(v0),
+        .w1(v1),
+        .w2(v2),
+        .w3(v3),
+        .w4(v4),
+        .w5(v5),
+        .w6(v6),
+        .w7(v7)
+    );
+    
+    
+        CacheFSM cachefsm(
+           .hit(cacheHit),
+           .miss(cacheMiss), 
+            .CLK(CLK), 
+            .RST(RESET), 
+         .update(cacheUpdate), 
+        .pc_stall(cacheStall)
+    );
+    
+
+    
+      Cache Otter_Cache(
+       .PC(fetch_struct.pc),
+      .CLK(CLK),
+     .update(cacheUpdate),
+     .cacheStall(cacheStall),
+       .w0(v0),
+       .w1(v1),
+       .w2(v2), 
+       .w3(v3),
+       .w4(v4), 
+       .w5(v5),
+       .w6(v6), 
+       .w7(v7),
+       .rd(currInstruction),
+      .hit(cacheHit), 
+     .miss(cacheMiss)
+    );
+    
+    assign fetch_struct.ir = currInstruction;
+
+    
+    
+    
     logic [31:0] tempDout2;
     logic [31:0] tempDout1;
+    
 
-  //OG ONE
+//  OG ONE
      Memory Otter_Memory (
        .MEM_ADDR2(mem_struct.alu_result),
        .MEM_CLK(CLK),
@@ -82,10 +143,15 @@ module Pipeline_Otter (
        .MEM_DOUT1(tempDout1), 
        .IO_WR(fetch_struct.IOBUS_wr) //change later
    );
-   
-   
+
    assign fetch_struct.memDout2 = tempDout2;
-   assign fetch_struct.ir = tempDout1;
+//   assign fetch_struct.ir = tempDout1;
+
+
+
+
+
+
    
    
      logic [6:0] opcodeBits;
@@ -117,9 +183,6 @@ module Pipeline_Otter (
   //==== Instruction Decode ===========================================
 
 
-//    always_ff @(posedge CLK) begin
-//        decode_struct <= fetch_struct;
-//      end
 
     always_ff @(posedge CLK) begin
         decode_struct.pc <= fetch_struct.pc;
@@ -208,7 +271,7 @@ end
       .reset(RESET),
       .int_taken(intTaken),
       //outs
-      .ALU_FUN(tempFun),  //need to look at again
+      .ALU_FUN(tempFun), 
       .srcA_SEL(muxA_SEL),
       .srcB_SEL(muxB_SEL),
       .PC_SEL(tempPCSEL),
@@ -228,7 +291,7 @@ HDU otterHazards(
     .FmuxB(FmuxB),
     .FmuxASel(FmuxASel),
     .FmuxBSel(FmuxBSel),
-    .PC_WE(PC_WE),
+    .PC_WE_FLAG(pcStall),
     .FlushFlag(FlushFlag)
 );
 
@@ -299,15 +362,15 @@ HDU otterHazards(
   );
   
   MUX ForwardmuxA (
-    .in1(MuxA_out),
-    .in2(FmuxA),
+    .in1(FmuxA),
+    .in2(MuxA_out),
     .MuxSel(FmuxASel),
     .MuxOut(FMuxA_out)
   );
   
   MUX ForwardmuxB (
-    .in1(MuxB_out),
-    .in2(FmuxB),
+    .in1(FmuxB),
+    .in2(MuxB_out),
     .MuxSel(FmuxBSel),
     .MuxOut(FMuxB_out)
   );
@@ -500,5 +563,3 @@ HDU otterHazards(
   );
 
 endmodule
-
-//make none of the assign ff blocks not assign to rfMux out

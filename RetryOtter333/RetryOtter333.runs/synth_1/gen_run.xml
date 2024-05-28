@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1716263844" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Pipeline_Otter.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35ticpg236-1L" LaunchTime="1716769311" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Pipeline_Otter.dcp">
   <File Type="PA-TCL" Name="Pipeline_Otter.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="Pipeline_Otter_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Pipeline_Otter_reports.tcl"/>
   <File Type="RDS-RDS" Name="Pipeline_Otter.vds"/>
   <File Type="RDS-UTIL" Name="Pipeline_Otter_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Pipeline_Otter_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="Pipeline_Otter.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="Pipeline_Otter_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="Pipeline_Otter_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ImmedGen.v">
@@ -39,6 +36,20 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Cache.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/CacheFSM.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/Decoder.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -47,6 +58,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/hazard_detection/HDU.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/InstructionMemory.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -133,6 +151,12 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../CPE-233-Otter/Utilities/Test_All.mem"/>
         <Attr Name="ImportTime" Val="1709608808"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../cacheTest.mem">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

@@ -1,7 +1,7 @@
 Vivado Simulator v2023.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot Pipeline_Otter_tb_behav xil_defaultlib.Pipeline_Otter_tb xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Users/samue/Vivado/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot Pipeline_Otter_tb_behav xil_defaultlib.Pipeline_Otter_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -13,6 +13,9 @@ Compiling package xil_defaultlib.$unit_ALU_sv_3557859668
 Compiling module xil_defaultlib.PC_MUX
 Compiling module xil_defaultlib.PC
 Compiling module xil_defaultlib.PCTOP
+Compiling module xil_defaultlib.InstructionMemory
+Compiling module xil_defaultlib.CacheFSM
+Compiling module xil_defaultlib.Cache_default
 Compiling module xil_defaultlib.Memory
 Compiling module xil_defaultlib.Decoder
 Compiling module xil_defaultlib.HDU

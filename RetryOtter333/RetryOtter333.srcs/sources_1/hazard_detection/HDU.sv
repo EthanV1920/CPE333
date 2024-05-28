@@ -79,21 +79,21 @@ module HDU (
     output logic [31:0] FmuxB,
     output logic FmuxASel,
     output logic FmuxBSel,
-    output logic PC_WE,
+    output logic PC_WE_FLAG,
     output logic FlushFlag
 );
 
 always_comb begin
     // Handling the reset function
     if (reset == 1'b1) begin
-        PC_WE = 1'b1;
+        PC_WE_FLAG = 1'b1;
         FmuxA = 32'b0;
         FmuxB = 32'b0;
         FmuxASel = 1'b0;
         FmuxBSel = 1'b0;
         FlushFlag = 1'b0;
     end else begin
-        PC_WE = 1'b1;
+        PC_WE_FLAG = 1'b1;
         
         // Initialize default values
         FmuxA = EX.muxA_out;
@@ -105,17 +105,17 @@ always_comb begin
         if (EX.rs1_used && MEM.rd_used && (EX.rs1_addr == MEM.rd_addr)) begin
             if (MEM.pc[6:0] == LOAD) begin
                 FmuxA = MEM.alu_result;
-                PC_WE = 1'b0;
+                PC_WE_FLAG = 1'b0;
                 FmuxASel = 1'b0;
             end else begin
                 FmuxA = MEM.alu_result;
                 FmuxASel = 1'b1;
-                PC_WE = 1'b1;
+                PC_WE_FLAG = 1'b1;
             end
         end else if (EX.rs1_used && WB.rd_used && (EX.rs1_addr == WB.rd_addr)) begin
             FmuxA = WB.alu_result;
             FmuxASel = 1'b1;
-            PC_WE = 1'b1;
+            PC_WE_FLAG = 1'b1;
         end
         
         // Begin RS2 Logic
