@@ -31,5 +31,6 @@ module MUXA(
        // default value to prevent latches and make sure there's no issues 
        // with the input (should never be used as output)
             ALUmuxA_out = 32'hFFFFFFFF; 
+       $display("sel: %h, out: %h", ALUmuxA_SEL, ALUmuxA_out);
     end
 endmodule

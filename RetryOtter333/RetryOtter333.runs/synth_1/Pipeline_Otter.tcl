@@ -88,6 +88,7 @@ read_mem {
   C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/memFiles/lab2.mem
   C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/imports/Utilities/Test_All.mem
   C:/Users/samue/OneDrive/Desktop/CPE_333/cacheTest.mem
+  C:/Users/samue/OneDrive/Desktop/CPE_333/dataHazard.mem
 }
 read_verilog -library xil_defaultlib -sv {
   C:/Users/samue/OneDrive/Desktop/CPE_333/Github/CPE333/RetryOtter333/RetryOtter333.srcs/sources_1/new/ALU.sv

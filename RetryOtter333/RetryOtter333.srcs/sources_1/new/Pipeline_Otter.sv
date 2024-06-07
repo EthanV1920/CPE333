@@ -348,7 +348,9 @@ HDU otterHazards(
       //outs
       .ALUmuxA_out(MuxA_out)
   );
-  
+  always_comb begin
+    $display("Utype top: %h",U_imm); 
+  end
 
   MUXB otter_alu_muxB (
       .ALUmuxB0(decode_struct.rs2),
@@ -394,7 +396,7 @@ HDU otterHazards(
 //        execute_struct <= decode_struct;
 //     end
      
-     always_ff @(posedge CLK) begin
+     always_ff @(negedge CLK) begin
         execute_struct.pc <= decode_struct.pc;
         execute_struct.opcode <= decode_struct.opcode;
         execute_struct.rs1_addr <= decode_struct.rs1_addr;

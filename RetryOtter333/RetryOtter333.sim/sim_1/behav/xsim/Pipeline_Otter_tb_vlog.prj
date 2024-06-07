@@ -6,8 +6,11 @@ sv xil_defaultlib  \
 "../../../../RetryOtter333.srcs/sources_1/new/ALU.sv" \
 "../../../../RetryOtter333.srcs/sources_1/new/BranchAddGen.sv" \
 "../../../../RetryOtter333.srcs/sources_1/new/BranchCondGen.sv" \
+"../../../../RetryOtter333.srcs/sources_1/new/Cache.sv" \
+"../../../../RetryOtter333.srcs/sources_1/new/CacheFSM.sv" \
 "../../../../RetryOtter333.srcs/sources_1/new/Decoder.sv" \
 "../../../../RetryOtter333.srcs/sources_1/hazard_detection/HDU.sv" \
+"../../../../RetryOtter333.srcs/sources_1/new/InstructionMemory.sv" \
 "../../../../RetryOtter333.srcs/sources_1/hazard_detection/MUX.sv" \
 "../../../../RetryOtter333.srcs/sources_1/new/Memory.sv" \
 "../../../../RetryOtter333.srcs/sources_1/new/MuxA.v" \
