@@ -34,7 +34,6 @@ typedef struct packed{
     logic [31:0] pc;
     logic [31:0] ir;
 } instr_t;
-
 typedef struct packed{
     logic [31:0] utype;
     logic [31:0] jtype;
