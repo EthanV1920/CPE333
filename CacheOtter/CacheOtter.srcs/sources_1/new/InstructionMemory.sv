@@ -17,7 +17,7 @@ output logic [31:0] w7
 );
 
     logic [31:0] ram[0:16383];
-    initial $readmemh("debug.mem", ram, 0, 16383);
+    initial $readmemh("testAll.mem", ram, 0, 16383);
     
     //changed memory so it does output 8 words
     assign w0 = ram[a[31:2]];

@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="316.398 ns"></ZoomStartTime>
-      <ZoomEndTime time="444.299 ns"></ZoomEndTime>
-      <Cursor1Time time="600.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,074.972 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,203.373 ns"></ZoomEndTime>
+      <Cursor1Time time="98.100 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="185"></NameColumnWidth>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="24" />
+   <WVObjectSize size="8" />
    <wvobject fp_name="/CacheOtter_tb/CLK_TB" type="logic">
       <obj_property name="ElementShortName">CLK_TB</obj_property>
       <obj_property name="ObjectShortName">CLK_TB</obj_property>
@@ -28,6 +28,14 @@
    <wvobject fp_name="/CacheOtter_tb/RESET_TB" type="logic">
       <obj_property name="ElementShortName">RESET_TB</obj_property>
       <obj_property name="ObjectShortName">RESET_TB</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CacheOtter_tb/UUT/pc_if" type="array">
+      <obj_property name="ElementShortName">pc_if[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_if[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CacheOtter_tb/UUT/pc_de" type="array">
+      <obj_property name="ElementShortName">pc_de[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_de[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/CacheOtter_tb/UUT/decode_t" type="array">
       <obj_property name="ElementShortName">decode_t</obj_property>
@@ -45,77 +53,5 @@
    <wvobject fp_name="/CacheOtter_tb/UUT/wb_t" type="array">
       <obj_property name="ElementShortName">wb_t</obj_property>
       <obj_property name="ObjectShortName">wb_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/RegisterFile/ram[6]" type="array">
-      <obj_property name="ElementShortName">[6][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[6][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/RegisterFile/ram[7]" type="array">
-      <obj_property name="ElementShortName">[7][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[7][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/RegisterFile/ram[10]" type="array">
-      <obj_property name="ElementShortName">[10][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[10][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/RegisterFile/ram[11]" type="array">
-      <obj_property name="ElementShortName">[11][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[11][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/RegisterFile/ram[12]" type="array">
-      <obj_property name="ElementShortName">[12][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[12][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/cacheStall" type="logic">
-      <obj_property name="ElementShortName">cacheStall</obj_property>
-      <obj_property name="ObjectShortName">cacheStall</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/pcWrite" type="logic">
-      <obj_property name="ElementShortName">pcWrite</obj_property>
-      <obj_property name="ObjectShortName">pcWrite</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/pc_if" type="array">
-      <obj_property name="ElementShortName">pc_if[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_if[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/pc_de" type="array">
-      <obj_property name="ElementShortName">pc_de[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_de[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/Otter_Cache/rd" type="array">
-      <obj_property name="ElementShortName">rd[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/OtterImem/a" type="array">
-      <obj_property name="ElementShortName">a[31:0]</obj_property>
-      <obj_property name="ObjectShortName">a[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/OtterImem/w0" type="array">
-      <obj_property name="ElementShortName">w0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w0[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/OtterImem/w1" type="array">
-      <obj_property name="ElementShortName">w1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/OtterImem/w2" type="array">
-      <obj_property name="ElementShortName">w2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w2[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/Otter_Cache/rd" type="array">
-      <obj_property name="ElementShortName">rd[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/Otter_Cache/w0" type="array">
-      <obj_property name="ElementShortName">w0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w0[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/Otter_Cache/w1" type="array">
-      <obj_property name="ElementShortName">w1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CacheOtter_tb/UUT/Otter_Cache/w2" type="array">
-      <obj_property name="ElementShortName">w2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">w2[31:0]</obj_property>
    </wvobject>
 </wave_config>

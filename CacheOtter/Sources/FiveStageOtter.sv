@@ -72,7 +72,7 @@ module CacheOtter(
     logic [31:0] pc_de;
     logic ld_use_hz, flush, hold_flush, cacheStall;
     always_ff@(posedge CLK) begin
-        if(!ld_use_hz)
+        if(!ld_use_hz && !cacheStall)
             pc_de <= pc_if;
             
         hold_flush <= flush;
@@ -80,7 +80,7 @@ module CacheOtter(
     
     
     
-    assign pcWrite = (!ld_use_hz) ;     //if ldHazard is not true and if cacheStall is not true
+    assign pcWrite = (!ld_use_hz && !cacheStall) ;     //if ldHazard is not true and if cacheStall is not true
     assign memRead1 = !ld_use_hz;
     
     //------------------MEMORY1: INSTR----------------//
@@ -96,75 +96,76 @@ module CacheOtter(
     logic [31:0] mem_wd, mem_rs2, mem_dout2;
     
     
-//    logic [31:0] v0, v1, v2, v3, v4, v5, v6, v7, currInstruction;
-//    logic cacheUpdate, cacheHit, cacheMiss;
+    logic [31:0] v0, v1, v2, v3, v4, v5, v6, v7, currInstruction;
+    logic cacheUpdate, cacheHit, cacheMiss;
+    
+   
         
         
-        
-//     InstructionMemory OtterImem (
-//        .a(pc_de),
-//        .w0(v0),
-//        .w1(v1),
-//        .w2(v2),
-//        .w3(v3),
-//        .w4(v4),
-//        .w5(v5),
-//        .w6(v6),
-//        .w7(v7)
-//    );
+     InstructionMemory OtterImem (
+        .a(pc_de),
+        .w0(v0),
+        .w1(v1),
+        .w2(v2),
+        .w3(v3),
+        .w4(v4),
+        .w5(v5),
+        .w6(v6),
+        .w7(v7)
+    );
     
-//        CacheFSM cachefsm(
-//           .hit(cacheHit),
-//           .miss(cacheMiss), 
-//            .CLK(CLK), 
-//            .RST(RST), 
-//         .update(cacheUpdate), 
-//        .pc_stall(cacheStall)
-//    );
-    
-
-//      Cache Otter_Cache(
-//       .PC(pc_de),
-//      .CLK(CLK),
-//     .update(cacheUpdate),
-//     .cacheStall(cacheStall),
-//       .w0(v0),
-//       .w1(v1),
-//       .w2(v2), 
-//       .w3(v3),
-//       .w4(v4), 
-//       .w5(v5),
-//       .w6(v6), 
-//       .w7(v7),
-//       .rd(currInstruction),
-//      .hit(cacheHit), 
-//     .miss(cacheMiss)
-//    );
-    
-//    assign ir_de = currInstruction;
+        CacheFSM cachefsm(
+           .hit(cacheHit),
+           .miss(cacheMiss), 
+            .CLK(CLK), 
+            .RST(RST), 
+         .update(cacheUpdate), 
+        .pc_stall(cacheStall)
+    );
     
 
+      Cache Otter_Cache(
+       .PC(pc_de),
+      .CLK(CLK),
+     .update(cacheUpdate),
+     .cacheStall(cacheStall),
+       .w0(v0),
+       .w1(v1),
+       .w2(v2), 
+       .w3(v3),
+       .w4(v4), 
+       .w5(v5),
+       .w6(v6), 
+       .w7(v7),
+       .rd(currInstruction),
+      .hit(cacheHit), 
+     .miss(cacheMiss)
+    );
+    
+    assign ir_de = currInstruction;
+    
 
 
-    logic [31:0] unusedMemDout1;
 
-    OTTER_mem_byte OtterMemory(
-        .ERR(err),
-        .MEM_CLK(CLK), 
-        .MEM_ADDR1(pc_if), 
-        .MEM_ADDR2(mem_wd),
-        .MEM_DIN2(mem_rs2), 
-        .MEM_WRITE2(mem_t.memWrite) , 
-        .MEM_READ1(memRead1), 
-        .MEM_READ2(mem_t.memRead2), 
-        .MEM_SIZE(size_de), 
-        .MEM_SIGN(sign_de),
-        .IO_IN(IOBUS_IN), 
-        //outs
-        .IO_WR(IOBUS_WR), 
-        .MEM_DOUT1(ir_de),     
-        .MEM_DOUT2(mem_dout2)
-     );
+//    logic [31:0] unusedMemDout1;
+
+//    OTTER_mem_byte OtterMemory(
+//        .ERR(err),
+//        .MEM_CLK(CLK), 
+//        .MEM_ADDR1(pc_if), 
+//        .MEM_ADDR2(mem_wd),
+//        .MEM_DIN2(mem_rs2), 
+//        .MEM_WRITE2(mem_t.memWrite) , 
+//        .MEM_READ1(memRead1), 
+//        .MEM_READ2(mem_t.memRead2), 
+//        .MEM_SIZE(size_de), 
+//        .MEM_SIGN(sign_de),
+//        .IO_IN(IOBUS_IN), 
+//        //outs
+//        .IO_WR(IOBUS_WR), 
+//        .MEM_DOUT1(unusedMemDout1),     
+//        .MEM_DOUT2(mem_dout2)
+//     );
 
     
 
@@ -321,6 +322,7 @@ module CacheOtter(
     .JAL(jal_if),
     .JALR(jalr_if),
     .BRANCH(branch_if));
+
     
     //--------MEMORY2: WRITE-----------//
     instr_t mem_t;
@@ -335,6 +337,65 @@ module CacheOtter(
         mem_wd <= alu_res;
         mem_rs2 <= frs2_ex;
     end
+    
+    
+       
+    //----------DATA CACHE-----------//
+    
+    logic [31:0] w0, w1, w2, w3;
+    logic cacheRead, cacheWrite, dataCacheUpdate, dataCacheHit, dataCacheMiss, dataCacheStall;
+    logic [31:0] cacheToMemory;
+        
+        
+    always_comb begin
+        cacheRead = 1'b0;
+        cacheWrite = 1'b0;
+        if(mem_t.opcode == LOAD) cacheRead = 1'b1;
+        else if(mem_t.opcode == STORE) cacheWrite = 1'b1;
+    end
+    
+          
+         DataCacheFSM datacachefsm(
+           .hit(dataCacheHit),
+           .miss(dataCacheMiss), 
+            .CLK(CLK), 
+            .RST(RST), 
+            //outs
+         .update(dataCacheUpdate), 
+        .pc_stall(dataCacheStall)
+    );
+        
+        
+     DataMemory otterdatamemory(
+        .CLK(CLK),
+        .read(cacheRead),
+        .write(cacheWrite),
+        .addressIn(mem_wd),
+        .dataIn(mem_rs2),
+        //outs
+        .w0(w0),
+        .w1(w1),
+        .w2(w2),
+        .w3(w3)
+     );
+        
+        
+    
+    DataCache OtterData(
+         .Address(mem_wd),   
+         .CLK(CLK),              
+         .update(dataCacheUpdate),           
+        .cacheStall(dataCacheStall),       
+        .w0(w0),  
+        .w1(w1),  
+        .w2(w2),  
+        .w3(w3), 
+        //outs 
+         .rd(mem_dout2), 
+        .hit(dataCacheHit),       
+       .miss(dataCacheMiss)
+   );   
+    
     
     assign IOBUS_ADDR = mem_wd;
     assign IOBUS_OUT = mem_rs2;
