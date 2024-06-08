@@ -13,20 +13,20 @@ module InstructionCache(
     input logic [31:0] w1,
     input logic [31:0] w2, 
     input logic [31:0] w3,
-    // input logic [31:0] w4, 
-    // input logic [31:0] w5,
-    // input logic [31:0] w6, 
-    // input logic [31:0] w7,
+    input logic [31:0] w4, 
+    input logic [31:0] w5,
+    input logic [31:0] w6, 
+    input logic [31:0] w7,
     output logic [31:0] rd,
     output logic hit, 
     output logic miss
     );
     
     parameter NUM_BLOCKS = 16;
-    parameter BLOCK_SIZE = 4;
+    parameter BLOCK_SIZE = 8;
     parameter INDEX_SIZE = 4;
-    parameter WORD_OFFSET_SIZE = 2;
-    parameter BYTE_OFFSET = 2;
+    parameter WORD_OFFSET_SIZE = 3;
+    parameter BYTE_OFFSET = 0;
     parameter TAG_SIZE = 32 - INDEX_SIZE - WORD_OFFSET_SIZE - BYTE_OFFSET;
     
     //TO DO: MAY NEED FIX FOR SIZE -V
@@ -68,10 +68,10 @@ module InstructionCache(
             data[index][1] <= w1;
             data[index][2] <= w2;
             data[index][3] <= w3;
-            // data[index][4] <= w4;
-            // data[index][5] <= w5;
-            // data[index][6] <= w6;
-            // data[index][7] <= w7;
+            data[index][4] <= w4;
+            data[index][5] <= w5;
+            data[index][6] <= w6;
+            data[index][7] <= w7;
             valid_bits[index] <= 1'b1;
         end
     end

@@ -26,6 +26,8 @@ input miss,
 input CLK, 
 input RST, 
 output logic update, 
+output logic pc_stall,
+output logic dirty,
 );
 
     typedef enum{

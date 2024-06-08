@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module InstructionCache(
-    input [31:0] PC,
+    input [31:0] Address,
     input CLK,
     input update,
     input cacheStall,
@@ -55,10 +55,10 @@ module InstructionCache(
         end
     end
     
-    assign index = PC[7:4];
-    assign pc_tag = PC[31:8];
-    assign word_offset = PC[3:2];
-    assign byte_offset = PC[1:0];
+    assign index = Address[7:4];
+    assign pc_tag = Address[31:8];
+    assign word_offset = Address[3:2];
+    assign byte_offset = Address[1:0];
 
     always_comb begin
         hit = 0;
@@ -68,7 +68,7 @@ module InstructionCache(
             if(cache[index][i].valid && (cache[index][i].tag == pc_tag)) begin
                 hit = 1;
                 miss = 0;
-                if(!cacheStall) rd = cache[index][i].data[word_offset];
+                if(!cacheStall) rd = bytecache[index][i].data[word_offset];
                 break;
             end
         end
