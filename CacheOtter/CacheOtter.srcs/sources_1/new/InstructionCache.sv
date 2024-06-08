@@ -4,7 +4,7 @@
 // Engineer: Maria Pantoja
 //////////////////////////////////////////////////////////////////////////////////
 
-module Cache(
+module InstructionCache(
     input [31:0] PC,
     input CLK,
     input update,
@@ -13,28 +13,31 @@ module Cache(
     input logic [31:0] w1,
     input logic [31:0] w2, 
     input logic [31:0] w3,
-    input logic [31:0] w4, 
-    input logic [31:0] w5,
-    input logic [31:0] w6, 
-    input logic [31:0] w7,
+    // input logic [31:0] w4, 
+    // input logic [31:0] w5,
+    // input logic [31:0] w6, 
+    // input logic [31:0] w7,
     output logic [31:0] rd,
     output logic hit, 
     output logic miss
     );
     
     parameter NUM_BLOCKS = 16;
-    parameter BLOCK_SIZE = 8;
+    parameter BLOCK_SIZE = 4;
     parameter INDEX_SIZE = 4;
-    parameter WORD_OFFSET_SIZE = 3;
-    parameter BYTE_OFFSET = 0;
+    parameter WORD_OFFSET_SIZE = 2;
+    parameter BYTE_OFFSET = 2;
     parameter TAG_SIZE = 32 - INDEX_SIZE - WORD_OFFSET_SIZE - BYTE_OFFSET;
     
+    //TO DO: MAY NEED FIX FOR SIZE -V
     logic [31:0] data[NUM_BLOCKS-1:0][BLOCK_SIZE-1:0];
     logic [TAG_SIZE-1:0] tags[NUM_BLOCKS-1:0];
     logic valid_bits[NUM_BLOCKS-1:0];
+    logic dirty_bits[NUM_BLOCKS-1:0];
     logic [3:0] index;
     logic [TAG_SIZE-1:0]cache_tag, pc_tag;
-    logic [2:0] word_offset;
+    logic [1:0] word_offset;
+    logic [1:0] byte_offset;
     
     initial begin
         int i;int j;
@@ -46,11 +49,12 @@ module Cache(
         end
     end
     
-    assign index = PC[8:5];
+    assign index = PC[7:4];
     assign validity = valid_bits[index];
     assign cache_tag = tags[index];
-    assign word_offset = PC[4:2];
-    assign pc_tag = PC[31:9];
+    assign byte_offset = PC[1:0];
+    assign word_offset = PC[3:2];
+    assign pc_tag = PC[31:8];
     assign hit = (validity && (cache_tag == pc_tag));
     assign miss = !hit;
     always_comb begin
@@ -64,10 +68,10 @@ module Cache(
             data[index][1] <= w1;
             data[index][2] <= w2;
             data[index][3] <= w3;
-            data[index][4] <= w4;
-            data[index][5] <= w5;
-            data[index][6] <= w6;
-            data[index][7] <= w7;
+            // data[index][4] <= w4;
+            // data[index][5] <= w5;
+            // data[index][6] <= w6;
+            // data[index][7] <= w7;
             valid_bits[index] <= 1'b1;
         end
     end

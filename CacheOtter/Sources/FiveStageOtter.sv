@@ -34,6 +34,7 @@ typedef struct packed{
     logic [31:0] pc;
     logic [31:0] ir;
 } instr_t;
+
 typedef struct packed{
     logic [31:0] utype;
     logic [31:0] jtype;
@@ -95,7 +96,7 @@ module CacheOtter(
     logic [31:0] mem_wd, mem_rs2, mem_dout2;
     
     
-//    logic [31:0] v0, v1, v2, v3, v4, v5, v6, v7, currInstruction;
+//    logic [31:0] v0, v1, v2, v3, currInstruction;
 //    logic cacheUpdate, cacheHit, cacheMiss;
         
         
@@ -105,11 +106,7 @@ module CacheOtter(
 //        .w0(v0),
 //        .w1(v1),
 //        .w2(v2),
-//        .w3(v3),
-//        .w4(v4),
-//        .w5(v5),
-//        .w6(v6),
-//        .w7(v7)
+//        .w3(v3)
 //    );
     
 //        CacheFSM cachefsm(
@@ -121,8 +118,7 @@ module CacheOtter(
 //        .pc_stall(cacheStall)
 //    );
     
-
-//      Cache Otter_Cache(
+//      InstructionCache Otter_Cache(
 //       .PC(pc_de),
 //      .CLK(CLK),
 //     .update(cacheUpdate),
@@ -131,10 +127,6 @@ module CacheOtter(
 //       .w1(v1),
 //       .w2(v2), 
 //       .w3(v3),
-//       .w4(v4), 
-//       .w5(v5),
-//       .w6(v6), 
-//       .w7(v7),
 //       .rd(currInstruction),
 //      .hit(cacheHit), 
 //     .miss(cacheMiss)
