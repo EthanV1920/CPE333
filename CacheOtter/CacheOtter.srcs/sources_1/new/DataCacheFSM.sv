@@ -23,49 +23,65 @@
 module DataCacheFSM(
 input hit, 
 input miss, 
+input read,
+input write,
 input CLK, 
 input RST, 
 output logic update, 
-output logic pc_stall
+output logic pc_stall,
+output logic readFrom
 );
 
     typedef enum{
-        ST_READ_CACHE,
-        ST_READ_MEM
+        ST_IDLE,
+        ST_READ,
+        ST_WRITE
     } state_type;
     
     state_type PS, NS;
     
     always_ff @(posedge CLK) begin
         if(RST == 1)
-            PS <= ST_READ_MEM;
+            PS <= ST_IDLE;
         else
             PS <= NS;
     end
     
     always_comb begin
-        update = 1'b1;
+        update = 0;
         pc_stall = 0;
+        readFrom = 0;
         
         case (PS)
-            ST_READ_CACHE: begin
-                update = 1'b0;
+            ST_IDLE: begin
+                if(read)
+                    NS = ST_READ;
+                else if(write)
+                    NS = ST_WRITE;
+                else
+                    NS = ST_IDLE;
+            end
+            ST_READ: begin
                 if(hit) begin
-                    NS = ST_READ_CACHE;
+                    NS = ST_IDLE;
+                    readFrom = 1;
                 end
-                else if(miss) begin
-                    pc_stall = 1'b1;
-                    NS = ST_READ_MEM;
+                if(miss) begin
+                    NS = ST_READ;
+                    update = 1;
+                    pc_stall = 1'b1;   
                 end
-                else 
-                    NS = ST_READ_CACHE;
             end
-            ST_READ_MEM: begin
-                pc_stall = 1'b1;
-                NS = ST_READ_CACHE;
+            ST_WRITE: begin
+                update = 1;
+                if(read)
+                    NS = ST_READ;
+                else if(write)
+                    NS = ST_WRITE;
+                else
+                    NS = ST_IDLE;
             end
-            
-            default: NS = ST_READ_CACHE;
+            default: NS = ST_IDLE;
         endcase
     end
     

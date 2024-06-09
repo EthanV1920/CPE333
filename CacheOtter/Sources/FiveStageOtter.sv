@@ -70,9 +70,9 @@ module CacheOtter(
     );
     
     logic [31:0] pc_de;
-    logic ld_use_hz, flush, hold_flush, cacheStall;
+    logic ld_use_hz, flush, hold_flush, cacheStall, dataCacheStall;
     always_ff@(posedge CLK) begin
-        if(!ld_use_hz && !cacheStall)
+        if(!ld_use_hz && !cacheStall && !dataCacheStall)
             pc_de <= pc_if;
             
         hold_flush <= flush;
@@ -80,7 +80,7 @@ module CacheOtter(
     
     
     
-    assign pcWrite = (!ld_use_hz && !cacheStall) ;     //if ldHazard is not true and if cacheStall is not true
+    assign pcWrite = (!ld_use_hz && !cacheStall && !dataCacheStall) ;     //if ldHazard is not true and if cacheStall is not true
     assign memRead1 = !ld_use_hz;
     
     //------------------MEMORY1: INSTR----------------//
@@ -322,6 +322,9 @@ module CacheOtter(
     .JAL(jal_if),
     .JALR(jalr_if),
     .BRANCH(branch_if));
+    
+    
+
 
     
     //--------MEMORY2: WRITE-----------//
@@ -343,21 +346,33 @@ module CacheOtter(
     //----------DATA CACHE-----------//
     
     logic [31:0] w0, w1, w2, w3;
-    logic cacheRead, cacheWrite, dataCacheUpdate, dataCacheHit, dataCacheMiss, dataCacheStall;
+    logic cacheRead, cacheWrite, dataCacheUpdate, dataCacheHit, dataCacheMiss, cacheMemRead, cacheMemWrite;
     logic [31:0] cacheToMemory;
         
         
-    always_comb begin
-        cacheRead = 1'b0;
-        cacheWrite = 1'b0;
-        if(mem_t.opcode == LOAD) cacheRead = 1'b1;
-        else if(mem_t.opcode == STORE) cacheWrite = 1'b1;
+//    always_ff @ (posedge CLK) begin
+      always_comb begin
+        cacheRead <= 1'b0;
+        cacheWrite <= 1'b0;
+        if(execute_t.opcode == LOAD) cacheRead <= 1'b1;
+        else if(execute_t.opcode == STORE) cacheWrite <= 1'b1;
     end
     
+//    always_comb begin
+//        cacheMemRead <= 1'b0;
+//        cacheMemWrite <= 1'b0;
+//        if(mem_t.opcode == LOAD) cacheMemRead <= 1'b1;
+//        else if(mem_t.opcode == STORE) cacheMemWrite <= 1'b1;
+//    end
+    
+    
+    
           
-         DataCacheFSM datacachefsm(
+    DataCacheFSM datacachefsm(
            .hit(dataCacheHit),
            .miss(dataCacheMiss), 
+           .read(cacheRead),
+           .write(cacheWrite),
             .CLK(CLK), 
             .RST(RST), 
             //outs
@@ -378,14 +393,15 @@ module CacheOtter(
         .w2(w2),
         .w3(w3)
      );
-        
+     
         
     
-    DataCache OtterData(
-         .Address(mem_wd),   
+     DataCache OtterData(
+         .Address(alu_res),   
          .CLK(CLK),              
          .update(dataCacheUpdate),           
-        .cacheStall(dataCacheStall),       
+        .cacheStall(dataCacheStall),
+        .read(cacheRead),       
         .w0(w0),  
         .w1(w1),  
         .w2(w2),  
@@ -396,16 +412,28 @@ module CacheOtter(
        .miss(dataCacheMiss)
    );   
     
+
+    
     
     assign IOBUS_ADDR = mem_wd;
     assign IOBUS_OUT = mem_rs2;
     
     //-------------WRITE BACK-----------//
     instr_t wb_t;
-    logic [31:0] aluRes_wb, pcInc;
+    logic [31:0] aluRes_wb, pcInc, wbMem2;
     always_ff@(posedge CLK) begin
         wb_t <= mem_t;
         aluRes_wb <= mem_wd;
+//        wbMem2 <= mem_dout2;
+        
+    end
+    logic [31:0] threeMux; 
+    always_comb begin
+        if(wb_t.opcode == AUIPC)
+            threeMux = mem_wd;
+        else
+            threeMux = aluRes_wb;
+        
     end
     
     assign pcInc = wb_t.pc + 4;
@@ -415,7 +443,7 @@ module CacheOtter(
     .ZERO(pcInc),
     .ONE(32'h00000000),
     .TWO(mem_dout2),
-    .THREE(aluRes_wb),
+    .THREE(threeMux),
     .OUT(wb_wd));
     
 endmodule

@@ -9,6 +9,7 @@ module DataCache(
     input CLK,
     input update,
     input cacheStall,
+    input read,
     input logic [31:0] w0,
     input logic [31:0] w1,
     input logic [31:0] w2, 
@@ -59,22 +60,28 @@ module DataCache(
     assign pc_tag = Address[31:8];
     assign word_offset = Address[3:2];
     assign byte_offset = Address[1:0];
+    
+    logic missTemp;
 
     always_comb begin
         hit = 0;
-        miss = 1;
+        missTemp = 0;
         rd = 32'hDEADBEEF; 
         for (int i = 0; i < NUM_WAYS; i = i + 1) begin
+            missTemp = 1;
             if(cache[index][i].valid && (cache[index][i].cache_tag == pc_tag)) begin
                 hit = 1;
-                miss = 0;
+                missTemp = 0;
                 if(!cacheStall) rd = cache[index][i].data[word_offset];
                 break;
             end
         end
+        
+      miss = missTemp;
+        
     end
         
-    always_ff @(negedge CLK) begin
+    always_ff @(posedge CLK) begin
         if(update) begin
             int random_way;
             random_way = $urandom % 4;
@@ -82,8 +89,8 @@ module DataCache(
             cache[index][random_way].data[1] <= w1;
             cache[index][random_way].data[2] <= w2;
             cache[index][random_way].data[3] <= w3;
-            if(cache[index][random_way].valid == 1'b1) cache[index][random_way].dirty <= 1'b1;
-            else cache[index][random_way].valid <= 1'b1;
+//            if(cache[index][random_way].valid == 1'b1) cache[index][random_way].dirty <= 1'b1;
+            cache[index][random_way].valid <= 1'b1;
             cache[index][random_way].cache_tag <= pc_tag;
         end
     end

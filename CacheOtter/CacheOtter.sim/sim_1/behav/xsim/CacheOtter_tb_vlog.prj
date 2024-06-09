@@ -1,0 +1,29 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../Sources/ALU.sv" \
+"../../../../Sources/BAG.sv" \
+"../../../../Sources/BCG.sv" \
+"../../../../Sources/BranchUnit.sv" \
+"../../../../Sources/CU_DCDR.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/CacheFsm.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/DataCache.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/DataCacheFSM.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/DataCacheMemory.sv" \
+"../../../../Sources/FiveStageOtter.sv" \
+"../../../../Sources/FourMux.sv" \
+"../../../../Sources/HazardUnit.sv" \
+"../../../../Sources/ImmediateGenerator.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/InstructionCache.sv" \
+"../../../../CacheOtter.srcs/sources_1/new/InstructionMemory.sv" \
+"../../../../Sources/PC.sv" \
+"../../../../Sources/PC_MUX.sv" \
+"../../../../Sources/PC_REG.sv" \
+"../../../../Sources/REG_FILE.sv" \
+"../../../../Sources/TwoMux.sv" \
+"../../../../CacheOtter.srcs/sim_1/new/CacheOtter_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

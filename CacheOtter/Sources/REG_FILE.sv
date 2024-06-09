@@ -35,6 +35,7 @@ module REG_FILE(
    
    //Create register flip flop while ensuring that register
    //0 (x0) is never written to and remains 0.
+   //WAS NEG EDGE
     always_ff@(negedge CLK) begin
         if (EN == 1'b1 && !WA == 5'd0) begin
             ram[WA] <= WD;
